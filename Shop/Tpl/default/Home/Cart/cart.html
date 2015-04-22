@@ -1,0 +1,82 @@
+<include file="Public:header" />
+<script type="text/javascript" src="../Public/js/cart.js"></script>
+
+<div class="main">
+    <div class="register">
+    
+        <div class="cart_top">
+            <div class="cart_top_left"><img src="../Public/images/cartnav-step1.gif" /></div>
+            <div class="cart_top_right pr10"><img src="../Public/images/cartnav-cart.gif" /></div>
+        </div>
+
+
+        <div class="form_cart padding_10 bg_gray border1_gray margin_10">
+            <h3>已放入购物车的商品:</h3>
+            <p class="mt05">请在此确认你要购买的商品 </p>
+
+            <div class="bg_white border1_gray padding_5 mt10">
+                <table width="100%" border="0" cellpadding="0" cellspacing="1" class="bg_gray">
+                    <tr height="30">
+                        <th width="5%">图片</th>
+                        <th width="40%">商品名称</th>
+                        <th width="10%">商品积分</th>
+                        <th width="10%">市场价格</th>
+                        <th width="10%">销售价格</th>
+                        <th width="10%">数量</th>
+                        <th width="10%">小计</th>
+                        <th width="5%">删除</th>
+                    </tr>
+
+                    <empty name="data.list">
+                        <tr bgcolor="#ffffff" class="ta_c"><td colspan="8" class="padding_5">购物车内商品为空</td></tr>
+                    <else />
+                        <volist name="data.list" id="vo" key="k">
+                            <tr bgcolor="#ffffff" class="ta_c">
+                                <input type="hidden" id="conditionId" name="where_id<{$k}>" value="<{$vo.id}>" />
+                                <input type="hidden" id="goodsId" name="goodsId" value="<{$vo.goods_id}>" />
+                                <td class="cart_pic padding_5"><a href="__APP__/goods/index/id/<{$vo.goods_id}>" target="_blank"><img width="50" height="50" src="__ROOT__/<{$vo.path}>x_<{$vo.pic}>" /></a></td>
+                                <td class="goods_nama padding_5 ta_l"><a href="__APP__/goods/index/id/<{$vo.goods_id}>" target="_blank"><{$vo.goods_name}></a></td>
+                                <td class="padding_5"><{$vo.points}></td>
+                                <td class="sell_price padding_5">￥<{$vo.market_price}></td>
+                                <td class="padding_5">￥<span id="sell_price"><{$vo.sell_price}></span></td>
+                                <td class="padding_5"><input type="text" size="5" id="goods_num" value="<{$vo.buy_num}>" onkeyup="if(this.value==0){this.value=1}" maxlength="5" /></td>
+                                <td bgcolor="#fffacd" class="padding_5">￥<span id="minStatistics"><{$vo.total_price}></span></td>
+                                <td class="padding_5"><a href="javascript:void(0)" id="delGoods"><img src="../Public/images/close.gif" /></a></td>
+                            </tr>
+                        </volist>
+                    </empty>
+                </table>
+            </div>
+
+            <div class="mt10 padding_10">
+                <form action="__APP__/cart/coupon" method="POST">
+                    <div>对以上商品使用优惠券(使用优惠券前请登陆会员)：</div>
+                    <span class="fl mt05">
+                    <input type="text" name="coupon_code" class="favorable_number" value="请输入优惠券号码" />
+                    <input type="submit" value="确定" />
+                    </span>
+                    <span class="ml40"><font color="red"><b>警告：</b></font>使用优惠券后请勿再修改数量，否则优惠失效!</span>
+                    <span class="fr f16">商品总额：￥<span class="f_verdana f_red fb" id="allPrice"><{$data.all_price}></span></span>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="padding_10 pb30 mb40 clearfix">
+            <span class="fl">
+                <a href="__APP__/index"><img src="../Public/images/btn-return.gif" /></a>
+                <a href="__APP__/Cart/Empty_cart"><img src="../Public/images/btn-clearcat.gif" /></a>
+            </span>
+
+            <span class="fr">
+                <a href="__APP__/Cart/Cart_checkout"><img src="../Public/images/btn-next.gif" /></a>
+            </span>
+
+        </div>
+
+    </div>
+</div>
+
+ 
+</body>
+</html>

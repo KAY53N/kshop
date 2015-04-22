@@ -1,0 +1,47 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 分类列表</span>
+        <span class="fr"><a href="<{:U('Admin-Sort/add_sort')}>" class="btn_sty">添加分类</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form action="<{:U('Admin-Sort/del_sort')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+                <tr>
+                    <th><input type="checkbox" id="more_checkbox">分类名称</th>
+                    <th>是否显示</th>
+                    <th>操作</th>
+                </tr>
+
+                <volist name="data.list" id="vo" key="k">
+                <tr align="center">
+                    <td align="left">
+                        <input type="checkbox" class="check" name="<{$k}>" value="<{$vo.id}>">
+                        <php>for($i=0; $i<$vo["count"]*8; $i++){echo "&nbsp;";}</php>
+                        <img width="9" height="9" src="../Public/images/menu_minus.gif">
+                        <a href="###" id="name"><{$vo.name}></a>
+                    </td>
+                    <td width="10%"><img src="../Public/images/yes.gif"></td>
+                    <td align="center" width="20%">
+                        <a href="<{:U('Admin-Sort/zhuanyi_sort/id/').$vo['id']}>">转移商品</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="<{:U('Admin-Sort/edit_sort/id/').$vo['id']}>">编辑</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="<{:U('Admin-Sort/del_sort/id/').$vo['id']}>" id="del">删除</a>
+                    </td>
+                </tr>
+                </volist>
+
+
+                <tr>
+                    <td colspan="3">
+                        <input type="submit" class="button" id="more_del" value="删除分类" />
+                        <span class="fr"><{$data.show}></span>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

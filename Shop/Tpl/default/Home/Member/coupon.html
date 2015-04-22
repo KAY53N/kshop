@@ -1,0 +1,51 @@
+<include file="Public:header" />
+
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+
+        <div class="member_right">
+  
+    <h3>我的优惠券</h3>
+
+            
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="memberlist mt10">
+        <tr>
+            <th class="pl10" width="25%">优惠码</th>
+            <th class="pl10" width="30%">名称</th>
+            <th class="pl10" width="10%">折扣</th>
+            <th class="pl10" width="15%">有效期</th>
+            <th class="pl10" width="10%">状态</th>
+            <th class="pl10" width="10%">操作</th>
+        </tr>
+
+        <empty name="list">
+            <tr>
+                <td class="pl10" colspan="5">尚无积分历史</td>
+            </tr>
+        <else />
+            <volist name="list" id="vo">
+                <tr>
+                    <td><{$vo.youhuima}></td>
+                    <td><{$vo.name}></td>
+                    <td><{$vo.zhekou}></td>
+                    <td><{$vo.validity|date="Y-m-d",###}></td>
+                    <td><if condition="$vo['status'] eq 1">可用<else />不可用</if></td>
+                    <td><a href="__APP__/member/del_coupon/id/<{$vo.id}>" style="color:blue">删 除</a></td>
+                </tr>
+            </volist>
+        </empty>
+    </table>
+            
+            </div>
+ 
+        
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

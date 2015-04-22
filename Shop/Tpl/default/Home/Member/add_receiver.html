@@ -1,0 +1,61 @@
+<include file="Public:header" />
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+  
+            <div class="member_right_hd">添加收货地址</div>
+
+            <form action="__APP__/member/add_receiver_sub" method="POST"  onSubmit="return Validator.Validate(this,2)">
+                <table width="100%">
+                
+                <tr height="30">
+                    <td><b class="f_red">*</b>姓名：</td>
+                    <td><input type="text" class="text_input text_style" name="name" size="10" dataType="Chinese" msg="请填写中文姓名"/></td>
+                </tr>
+                
+                <tr height="30">
+                    <td><b class="f_red">*</b>手机：</td>
+                    <td><input type="text" class="text_input text_style" name="mobile" size="25" maxlength="11" dataType="Mobile" msg="手机号码不正确"/></td>
+                </tr>
+                
+                <tr height="30">
+                    <td>固定电话：</td>
+                    <td><input type="text" name="phone" class="text_input text_style"/></td>
+                </tr>  
+                
+                <tr height="30">
+                    <td><b class="f_red">*</b>地区：</td>
+                    <td>
+                        <div id="selectt"></div>
+                        <SCRIPT type=text/javascript>$("#selectt").json2select(areaJson);</SCRIPT>
+                    </td>
+                </tr>   
+                
+                <tr height="30">
+                    <td><b class="f_red">*</b>地址：</td>
+                    <td><input type="text" class="text_input text_style" name="site" /></td>
+                </tr>  
+                
+                <tr height="30">
+                    <td><b class="f_red">*</b>邮编：</td>
+                    <td><input type="text" name="zip_code" class="text_input text_style" dataType="Custom" regexp="^[0-9]\d" msg="邮政编码不存在"/></td>
+                </tr>  
+                
+                <tr height="30">
+                    <td colspan="2"><input type="submit" value="添加" class="btn_setting_save ml40" /></td>
+                </tr>
+                 
+                </table>
+            </form>
+ 
+        
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

@@ -1,0 +1,80 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 添加会员</span>
+        <span class="fr"><a href="<{:U('Admin-User/index')}>" class="btn_sty">会员列表</a></span>
+    </div>
+ 
+    <div class="list_div mt10">
+
+        <form name="theForm" action="<{:U('Admin-User/add_user_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)">
+            <table width="100%" bgcolor="White">
+                <tr>
+                    <td align="right">会员名称:</td>
+                    <td><input type="text" name="username" id="username" dataType="User" msg="用户名格式不对" maxlength="14" />&nbsp;<font color="red"><b>*</b></font>&nbsp;<span id="us"></span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">邮件地址:</td>
+                    <td><input type="text" dataType="Email" msg="Email格式不对" name="email">&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">登录密码:</td>
+                    <td><input type="password" size="40" maxlength="20" name="password" dataType="Pass" msg="密码格式不对" >&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">姓名:</td>
+                    <td><input type="text" name="name">&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">性别:</td>
+                    <td><input type="radio" value="男" name="gender">&nbsp;男&nbsp;<input type="radio" value="女" name="gender" dataType="Group"  msg="必须选定一个性别" >&nbsp;女&nbsp;&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">出生日期:</td>
+                    <td>
+                        <input type="text" name="birth_date" size="25" id="f_rangeStart" dataType="Date" msg="生日日期不存在" />
+                        <script type="text/javascript">
+                        new Calendar({
+                              inputField: "f_rangeStart",
+                              dateFormat: "%Y-%m-%d",
+                              trigger: "f_rangeStart",
+                              bottomBar: false,
+                              onSelect: function() { this.hide()}
+                        });
+                        </script>
+                        &nbsp;<font color="red"><b>*</b></font>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">固定电话:</td>
+                    <td>
+                        <input type="text" value="" class="inputBg" size="40" name="phone">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="num" align="right">手机:</td>
+                    <td>
+                        <input type="text" value="" class="inputBg" size="40" name="mobile">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" class="button" value=" 确定 ">
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

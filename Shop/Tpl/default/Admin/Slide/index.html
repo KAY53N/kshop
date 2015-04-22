@@ -1,0 +1,31 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 幻灯片列表</span>
+        <span class="fr"><a href="<{:U('Admin-Slide/add_slide')}>" class="btn_sty">添加首页幻灯片</a></span>
+    </div>
+
+    <div class="list_div mt10">
+        <form action="<{:U('Admin-Slide/del_slide')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="3" id="table">
+                <tr>
+                    <th width="5%"><a href="###" title="点击对列表排序">编号<img src="../Public/images/sort_desc.gif"></a></th>
+                    <th width="85%">预览</th>
+                    <th width="10%">操作</th>
+                </tr>
+
+                <volist name="data.list" id="vo" key="k">
+                <tr>
+                    <td id="id" align="center"><{$k}></td>
+                    <td id="banna" align="center"><img width="360" height="80" src="__PUBLIC__/images/banna/<{$vo.img_url}>"></td>
+                    <td align="center">
+                        <a title="编辑" href="<{:U('Admin-Slide/edit_slide/id/').$vo['id']}>"><img width="16" height="16" border="0" src="../Public/images/icon_edit.gif"></a>
+                        <a title="移除" href="<{:U('Admin-Slide/del_slide/id/').$vo['id']}>" id="del"><img width="16" height="16" border="0" src="../Public/images/icon_drop.gif"></a>
+                    </td>
+                </tr>
+                </volist>
+            </table>
+        </form>
+    </div>
+
+<include file="Public:footFrame" />

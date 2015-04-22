@@ -1,0 +1,36 @@
+<{//-----------日历--------------}>
+<link type="text/css" rel="stylesheet" href="../Public/js/date/css/jscal2.css" />
+<link type="text/css" rel="stylesheet" href="../Public/js/date/css/border-radius.css" />
+<script type="text/javascript" src="../Public/js/date/js/jscal2.js"></script>
+<script type="text/javascript" src="../Public/js/date/js/lang/cn.js"></script>
+
+<{//-----------地区选择-----------}>
+<script type="text/javascript" src="../Public/js/json2select.min.js"></script>
+<script type="text/javascript" src="../Public/js/areaJson.js"></script>
+
+<script type="text/javascript" src="../Public/js/form-class.js"></script>
+
+<div class="main clearfix">
+
+        <div class="member mt10">
+
+            <div class="member_hd ml10">
+                <div class="gender"></div>
+                <div class="member_hd_info">
+                    <strong>您好：
+                        <php>
+                            if(Cookie::is_set('member_name'))
+                            {
+                                echo Cookie::get('member_name');
+                            }
+                            else
+                            {
+                                echo Cookie::get('user_name');
+                            }
+                        </php>
+                    </strong>
+                    &nbsp;&nbsp;[<a href="__APP__/member/index">会员中心</a>]
+                    &nbsp;&nbsp;[<a href="__APP__/login/loginout">退出</a>]
+                </div>
+                <div class="member_hd_r"></div>
+            </div>

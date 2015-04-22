@@ -1,0 +1,39 @@
+<include file="Public:header" />
+
+<div class="main clearfix">
+
+    <include file="Public:goods_sort" />
+
+    <div class="product">
+        <div class="padding_5 border1_gray bg_gray ml10">
+            <div class="bg_white border1_gray padding_10">
+            <form action="__APP__/Search/adv_search_sub" method="GET">
+            <table cellspacing="0" cellpadding="0" border="0" class="adv_serch_tab" width="100%">
+                <tr height="30">
+                    <th align="right">关键字：</th>
+                    <td><input size="20" name="keyword" ></td>
+                </tr>
+
+                <tr height="30">
+                    <th align="right">货号：</th>
+                    <td><input size="10" name="item_No" ></td>
+                </tr>
+
+                <tr height="30">
+                    <th align="right">价格区间：</th>
+                    <td><input type="text" size="8" name="start">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" size="8" name="end" ></td>
+                </tr>
+
+                <tr height="30">
+                    <th></th>
+                    <td><input type="submit" class="btn_adv_search" value="高级搜索" /></td>
+                </tr>
+            </table>
+            </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<include file="Public:footer" />

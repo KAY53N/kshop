@@ -1,0 +1,133 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 编辑商品</span>
+        <span class="fr"><a href="<{:U('Admin-Goods/index')}>" class="btn_sty">商品列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Goods/edit_goods_sub')}>" method="POST" enctype="multipart/form-data" onSubmit="return Validator.Validate(this,2)">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">商品名称：</td>
+                    <td><input type="text" name="title" class="input_text" style="width:350px" dataType="Require" msg="未填写商品名称" value="<{$data.goodsInfo.title}>" />&nbsp;<font color="red"><b>*</b></font>&nbsp;<span id="us"></span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品名称2：</td>
+                    <td><input type="text" name="title_info" class="input_text" style="width:350px" dataType="Require" msg="未填写商品名称2" value="<{$data.goodsInfo.title_info}>" />&nbsp;<font color="red"><b>*</b></font>&nbsp;<span id="us"></span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品货号：</td>
+                    <td><input type="text" name="item_No" class="input_text" style="width:150px"  dataType="Require" msg="必填写商品货号" value="<{$data.goodsInfo.item_No}>"/>&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品品牌：</td>
+                    <td>
+                        <select class="input_text" name="brand" dataType="Require"  msg="未选择商品品牌" style="padding:0px">
+                            <option>请选择</option>
+                            <volist name="data.sortInfo.sortList" id="vo">
+                            <option value="<{$vo.id}>" <if condition="$vo['id'] eq $data['goodsInfo']['brand']">selected="true"<else /></if>><php>for($i=0; $i<$vo["count"]*6; $i++){echo "&nbsp;";}</php>┗<{$vo.name}></option>
+                            </volist>
+                        </select>
+                        &nbsp;<font color="red"><b>*</b></font>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品重量：</td>
+                    <td><input type="text" name="weight" class="input_text" dataType="Number"  msg="未填写商品重量或，只能为数字!" style="width:150px" value="<{$data.goodsInfo.weight}>" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">库存：</td>
+                    <td><input type="text" name="inventory" class="input_text" dataType="Number"  msg="未填写商品库存，只能为数字!" style="width:150px" value="<{$data.goodsInfo.inventory}>" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">市场价格：</td>
+                    <td><input type="text" name="market_price" class="input_text" dataType="Number"  msg="未填写市场价格，只能为数字!" style="width:150px" value="<{$data.goodsInfo.market_price}>" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">积   分：</td>
+                    <td><input type="text" name="points" class="input_text" dataType="Number"  msg="未填写市场价格，只能为数字!" style="width:150px" value="<{$data.goodsInfo.points}>" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">销售价格：</td>
+                    <td><input type="text" name="sell_price" class="input_text" dataType="Number"  msg="未填写销售价格，只能为数字!" style="width:150px" value="<{$data.goodsInfo.sell_price}>" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片1：</td>
+                    <td><input type="file" name="file[]" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><empty name="list['pic_one']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_one}>" /></empty></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片2：</td>
+                    <td><input type="file" name="file[]"/></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><empty name="list['pic_two']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_two}>" /></empty></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片3：</td>
+                    <td><input type="file" name="file[]"/></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><empty name="list['pic_three']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_three}>" /></empty></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片4：</td>
+                    <td><input type="file" name="file[]"/></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><empty name="list['pic_four']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_four}>" /></empty></td>
+                </tr>
+
+                <tr>
+                    <td align="right">是否上架：</td>
+                    <td>
+                        <select name="putaway" class="input_text">
+                            <option value="1" <if condition="$data['goodsInfo']['putaway'] eq 1">selected="true"<else /></if>>是</option>
+                            <option value="0" <if condition="$data['goodsInfo']['putaway'] eq 0">selected="true"<else /></if>>否</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品详情：</td>
+                    <td><textarea id="details" name="details" style="width:95%;height:400px"><{$data.goodsInfo.details}></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="hidden" name="where_id" value="<{$data.goodsInfo.id}>" >
+                        <input type="submit" class="button" value=" 确定 ">
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

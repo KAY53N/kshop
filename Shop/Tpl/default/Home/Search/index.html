@@ -1,0 +1,64 @@
+<include file="Public:header" />
+
+<div class="main clearfix">
+
+    <include file="Public:goods_sort" />
+
+    <div class="product fr">
+        <div class="location pl10 ml10">
+            您当前的位置： <a href="__APP__">首页</a> » 搜索结果
+        </div>
+
+        <div class="serch_num">
+            &nbsp;&nbsp;<font color="red"><b>共找到<{$data.goods_num}>件商品</b></font>
+        </div>
+
+        <div class="bb mt10"></div>
+
+        <div class="clearfix">
+            <ul>
+                <empty name="data.goods_list">
+                    <br><br><h3>非常抱歉，没有找到相关商品</h3>
+                <else />
+                    <volist name="data.goods_list" id="vo">
+                        <li class="pt20 pb20 bb clearfix">
+                            <span class="gdlist_pic fl"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img width="160" height="160" src="__ROOT__/<{$vo.path}>z_<{$vo.pic_one}>" /></a></span>
+
+                    <span class="gdlist_titinfo fl pl20">
+                        <div class="f_black lh24"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,85}></a></div>
+                        <div class="mt10 f2 f_deep_gray lh22"><{$vo.title_info|msubstr=0,135}></div>
+                    </span>
+
+                    <span class="fl ml40 pt30">
+                        <div class="f16 f_red clearfix">￥<{$vo.sell_price}></div>
+                        <div class="clearfix mt20">
+                            <form action="__APP__/cart/index" method="POST">
+                                <input type="hidden" name="buy_num" value="1" />
+                                <input type="hidden" name="goods_id" value="<{$vo.id}>" />
+                                <input type="hidden" name="path" value="<{$vo.path}>" />
+                                <input type="hidden" name="pic" value="<{$vo.pic_one}>" />
+                                <input type="hidden" name="goods_name" value="<{$vo.title}>" />
+                                <input type="hidden" name="jifen" value="<{$vo.jifen}>" />
+                                <input type="hidden" name="sell_price" value="<{$vo.sell_price}>" />
+                                <input type="submit" class="<php>if($vo['inventory'] > 0){echo 'btn_add_cart';}else{echo 'btn_goods_empty';}</php>" value="加入购物车">
+                            </form>
+                        </div>
+
+                    </span>
+                        </li>
+                    </volist>
+                    <div id="pageNav" class="clearfix mt10 mb10"><{$data.show}></div>
+                </empty>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<include file="Public:footer" />

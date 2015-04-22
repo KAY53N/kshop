@@ -1,0 +1,51 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 公告列表</span>
+        <span class="fr"><a href="<{:U('Admin-News/add_news')}>" class="btn_sty">添加公告</a></span>
+    </div>
+
+    <div class="admin_hd clearfix mt10">
+        <form action="<{:U('Admin-News/search_news')}>" method="POST">
+            <span class="mr10"><img width="26" height="22" style="vertical-align:middle" border="0" alt="SEARCH" src="../Public/images/icon_search.gif"></span>
+            <span class="mr10">新闻标题 &nbsp;<input type="text" name="keyword" class="text_input"></span>
+            <span><input type="submit" value=" 搜索 "></span>
+        </form>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form action="<{:U('Admin-News/del_news')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="3" id="table">
+                <tr>
+                    <th width="10%">
+                        <input type="checkbox" id="more_checkbox">
+                        <a href="###" title="点击对列表排序">编号<img src="../Public/images/sort_desc.gif"></a>
+                    </th>
+                    <th width="60%">新闻标题</th>
+                    <th width="15%">添加时间</th>
+                    <th width="15%">操作</th>
+                </tr>
+
+                <volist name="data.list" id="vo" key="k">
+                <tr>
+                    <td id="id"><input type="checkbox" class="check" name="<{$k}>" value="<{$vo.id}>"><{$vo.id}></td>
+                    <td><{$vo.news_title}></td>
+                    <td align="center"><{$vo.news_date}></td>
+                    <td align="center">
+                    <a title="编辑" href="<{:U('Admin-News/edit_news/id/').$vo['id']}>"><img width="16" height="16" border="0" src="../Public/images/icon_edit.gif"></a>&nbsp;&nbsp;
+                    <a title="移除" href="<{:U('Admin-News/del_news/id/').$vo['id']}>" id="del"><img width="16" height="16" border="0" src="../Public/images/icon_drop.gif"></a>
+                    </td>
+                </tr>
+                </volist>
+
+                <tr>
+                    <td><input type="submit" class="button" id="more_del" value="删除新闻" /></td>
+                    <td colspan="3" align="right"><{$data.show}></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

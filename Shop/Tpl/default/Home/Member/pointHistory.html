@@ -1,0 +1,53 @@
+<include file="Public:header" />
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+  
+    <h3>我的积分</h3>
+
+    <div class="mt20 clearfix">
+        <span class="points_num fl">
+            <div class="mt35">您当前的有效积分：<span class="f_red"><{$data.allPoints}></span></div>
+        </span>
+        <span class="fl points_rule ml20 lh30">
+            <p><b>积分规则</b></p>
+            <p>1. 当积分已达到某一兑换积分标准时，顾客可将累计积分依照网站相应积分及兑换标准兑换回馈商品，网站将即时从用户会员积分中扣减相应积分。</p>
+            <p>2. 各项回馈项目（包含各项商品、服务或抵用券等）及兑换标准及兑换规则均以兑换当时最新回馈活动公告或目录为准。</p>
+            <p>3. 部分兑换商品有数量限制的，兑完为止。</p>
+            <p>4. 公告或目录如有有效期限的，逾期即不得兑换。</p>
+            <p>5. 积分兑换区的商品为只可用积分兑换的商品（如积分价格：100积分）。 </p>
+        </span>
+    </div>
+
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="memberlist clearfix mt50">
+        <tr>
+            <th width="30%" class="pl10">日期</th>
+            <th class="pl10">积分</th>
+            <th class="pl10">摘要</th>
+        </tr>
+
+        <!-------
+        <tr>
+            <td width="30%">2011-11-11 01:00:00</td>
+            <td>1266</td>
+            <td>20111129194968</td>
+        </tr>
+        --------->
+
+        <tr>
+            <td class="pl10" colspan="3">尚无积分历史</td>
+        </tr>
+ 
+    </table>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

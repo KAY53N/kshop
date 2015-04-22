@@ -1,0 +1,128 @@
+﻿<include file="Public:header" />
+
+<div class="main clearfix">
+    <div class="register">
+    
+        <div class="cart_top">
+            <div class="cart_top_left"><img src="../Public/images/cartnav-step4.gif" /></div>
+            <div class="cart_top_right fr pr10"><img src="../Public/images/cartnav-cart.gif" /></div>
+        </div>
+
+        <div class="margin_auto padding_10">
+            <h3>订单详情</h3>
+            <div class="mt10 padding_10 border1_gray bg_bisque"><{$data.list.add_date|date="Y-m-d H:i:s",###}>&nbsp;&nbsp;&nbsp;订单创建</div>
+
+            <div class="padding_10 border1_gray bg_gray mt10">
+                <table width="100%" bgcolor="#ffe4c4">
+                    <tr height="25">
+                        <td bgcolor="#EEF4FB" width="50%">订单编号：<{$data.list.order_No}></td>
+                        <td bgcolor="#eeeeee">下单日期：<{$data.list.add_date|date="Y-m-d H:i:s",###}></td>
+                        <td bgcolor="#eeeeee">状态：<switch name="data.list.status" ><case value="0"><span class="f_deep_gray">等待付款</span></case><case value="1"><span class="f_green">已付款，等待发货</span></case><case value="2"><span class="f_light_blue">已发货，等待收货</span></case><case value="3"><span class="f_red">交易成功</span></case></switch></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="padding_10 border1_gray bg_gray mt10">
+                <h3>购买的商品</h3>
+
+                <div class="division mt10">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <th width="10%">图片</th>
+                            <th width="60%">商品名称</th>
+                            <th width="10%">商品积分</th>
+                            <th width="10%">数量</th>
+                            <th width="10%">购买价格</th>
+                        </tr>
+
+                        <volist name="data.info" id="vo">
+                            <tr>
+                                <td><a href="__APP__/goods/index/id/<{$vo.goods_id}>" target="_blank"><img width="70" height="70" src="__ROOT__/<{$data.list.path}>x_<{$vo.order_pic}>" /></a></td>
+                                <td><a href="__APP__/goods/index/id/<{$vo.goods_id}>" target="_blank"><{$vo.title}></a></td>
+                                <td><{$vo.points}></td>
+                                <td><{$vo.buy_num}></td>
+                                <td bgcolor="#FBF7EE"><{$vo.price}></td>
+                            </tr>
+                        </volist>
+                    </table>
+                </div>
+
+                <h3 class="mt10">收货人信息</h3>
+                <div class="division mt10">
+                    <table width="100%" class="order_info" style="border:1px solid #DDDDDD" border="0" cellspacing="0" cellspacing="0">
+                        <tr>
+                            <th>收货人姓名:</th>
+                            <td><{$data.userInfo.name}></td>
+                            <th>收货人Mail:</th>
+                            <td><{$data.userInfo.email}></td>
+                        </tr>
+
+                        <tr>
+                            <th>配送地区:</th>
+                            <td><{$data.userInfo.sel0}>-<{$data.userInfo.sel1}>-<{$data.userInfo.sel2}>&nbsp;</td>
+                            <th>联系电话:</th>
+                            <td><{$data.userInfo.mobile}></td>
+                        </tr>
+
+                        <tr>
+                            <th>收货人邮编:</th>
+                            <td><{$data.userInfo.zip_code}></td>
+                            <th>送货时间:</th>
+                            <td>任意日期 任意时间段</td>
+                        </tr>
+
+                        <tr>
+                            <th>配送方式:</th>
+                            <td>EMS</td>
+                            <th>付款方式:</th>
+                            <td>支付宝(及时付款)&nbsp;</td>
+                        </tr>
+
+                        <tr>
+                            <th>支付币别:</th>
+                            <td colspan="3">人民币</td>
+                        </tr>
+
+                        <tr>
+                            <th valign="top">收货人地址:</th>
+                            <td valign="top" colspan="3">﻿<{$data.userInfo.sel0}>-<{$data.userInfo.sel1}>-<{$data.userInfo.sel2}>&nbsp;<{$data.userInfo.site}></td>
+                        </tr>
+
+                        <tr>
+                            <th valign="top">订单附言:</th>
+                            <td valign="top" colspan="3"><{$data.userInfo.remark}></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="division">
+                    <table width="100%" class="order_info2" bgcolor="#fff" style="border:1px solid #DDDDDD" border="0" cellspacing="0" cellspacing="0">
+
+                        <tr>
+                            <th>配送费用:</th>
+                            <td>￥&nbsp;0&nbsp;元</td>
+                        </tr>
+
+                        <tr>
+                            <th>您可获得积分:</th>
+                            <td><{$data.total_points}></td>
+                        </tr>
+
+                        <tr>
+                            <th>订单总金额:</th>
+                            <td class="price1">￥&nbsp;<{$data.list.price}>&nbsp;元</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+
+        </div>
+    
+    </div>
+</div>
+
+</body>
+</html>

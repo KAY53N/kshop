@@ -1,0 +1,39 @@
+<include file="Public:header" />
+
+<div class="main">
+    <div class="register">
+    
+        <div class="cart_top">
+            <div class="fl"><img src="../Public/images/cartnav-step4.gif" /></div>
+            <div class="fr"><img src="../Public/images/cartnav-cart.gif" /></div>
+        </div>
+
+        <empty name="data.id">
+            <div><h2><center>非法参数</center></h2></div>
+        <else />
+        <div class="margin_10">
+            <div class="success_wrap">
+                <div class="register_success pl50 f14 fb">恭喜！您的订单已经提交！</div>
+            </div>
+        </div>
+
+        <h3 class="mt20 margin_10">订单信息</h3>
+
+        <div class="margin_10 mb40">
+            <table border="0" cellpadding="0" cellspacing="1" width="100%" bgcolor="#cccccc">
+                <tr height="30">
+                    <td class="padding_10" bgcolor="#eef4fb">订单编号：<{$data.orderNo}>&nbsp;&nbsp;<a href="__APP__/cart/cart_orders_details/id/<{$data.id}>">[ 查看订单详细信息» ]</a></td>
+                </tr>
+
+                <tr bgcolor="#ffffff">
+                    <td height="60" class="padding_10">订单金额:<span class="ml05 f18 f_red f_verdana">￥<{$data.total_price}></span></td>
+                </tr>
+            </table>
+        </div>
+        </empty>
+
+    </div>
+</div>
+
+</body>
+</html>

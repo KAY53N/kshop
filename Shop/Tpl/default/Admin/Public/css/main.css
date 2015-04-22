@@ -1,0 +1,302 @@
+@charset "utf-8";
+body { text-align:left; margin:0 auto; font-size:12px; font-family:"微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif; -webkit-font-smoothing: antialiased; line-height:16px; color:#6E6360;}
+input,select { font:10pt "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif; color:#777;}
+img { border:none;}
+p,ul,ol,li,form,dd,dl,dt { margin:0; padding:0; list-style:none;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,p,blockquote,th,td { margin:0; padding:0;}
+a { color:#393635; text-decoration:none;}
+* { margin:0; padding:0; outline:none;}
+.clearfix:after { clear:both; content:"."; display:block; height:0; visibility:hidden;}
+
+.fl { float:left}
+.fr { float:right}
+
+.mt05 { margin-top:5px;}
+.mt10 { margin-top:10px;}
+.mt20 { margin-top:20px;}
+.mr10 { margin-right:10px;}
+.mr20 { margin-right:20px;}
+.ml10 { margin-left:10px;}
+.ml20 { margin-left:20px;}
+.margin_10 { margin:10px;}
+.margin_20 { margin:20px;}
+.margin_auto { margin:0px auto;}
+
+.pt10 { padding-top:10px;}
+.pt20 { padding-top:20px;}
+.pr05 { padding-right:5px;}
+.pr10 { padding-right:10px;}
+.pr20 { padding-right:20px;}
+.pb10 { padding-bottom:10px;}
+.pb20 { padding-bottom:20px;}
+.pl05 { padding-left:5px;}
+.pl10 { padding-left:10px;}
+.pl20 { padding-left:20px;}
+.padding_5 { padding:5px;}
+.padding_10 { padding:10px;}
+.padding_15 { padding:15px;}
+.padding_20 { padding:20px;}
+
+.border1_gray { border:1px solid #cccccc;}
+.border1_blue { border:1px solid #A6B9D0;}
+.bl { border-left:1px solid #ddd;}
+.bt { border-top:1px solid #ddd;}
+.br { border-right:1px solid #ddd;}
+.bb { border-bottom:1px solid #ddd;}
+.bb_dotted { border-bottom:1px dotted #ccc;}
+.bb_solid_orange { border-bottom:1px solid #ff9900;}
+
+.f12 { font-size:12px;}
+.f14 { font-size:14px;}
+.f16 { font-size:16px;}
+.f18 { font-size:18px;}
+.f20 { font-size:20px;}
+.f22 { font-size:22px;}
+.f24 { font-size:24px;}
+
+.f_black { color:#000000;}
+.f_white, .f_white a { color:#ffffff;}
+.f_gray { color:#a8a8a8;}
+.f_deep_gray { color:#777;}
+.f_red { color:#CC0000;}
+.f_yellow { color:#ff9922;}
+.f_green { color:#40984C;}
+.f_light_blue { color:#336699;}
+
+.bg_white{ background:#ffffff;}
+.bg_gray { background:#f0f0f0;}
+.bg_bisque { background:#FFFEE6;}
+.bg_light_blue { background:#d3eaf5;}
+
+.h18 { height:18px;}
+.h20 { height:20px;}
+.h25 { height:25px;}
+.h55 { height:55px;}
+
+.lh18 { line-height:18px;}
+.lh20 { line-height:20px;}
+.lh25 { line-height:25px;}
+.lh55 { line-height:55px;}
+
+.fb { font-weight:bold;}
+.fn { font-weight:normal;}
+.ta_c { text-align:center;}
+.ta_l { text-align:left;}
+.ta_r { text-align:right;}
+.block { display:block;}
+.gone { display:none;}
+.inline_block { display:inline-block;}
+.hidden { overflow:hidden;}
+.nowrap { white-space:nowrap}
+.pointer { cursor:pointer;}
+.default { cursor:default;}
+
+#header {
+    height:25px;
+    line-height:25px;
+    background:#F4FAFB;
+    border:1px solid #BBDDE5;
+    color:#9CACAF;
+    font-size:14px;
+    margin:0 0 10px;
+    overflow:hidden;
+    padding:7px 10px;
+    text-align:left;
+    font-weight:bold;
+}
+
+#footer {
+    background:#F4FAFB;
+    border: 1px solid #BBDDE5;
+    color:#9CACAF;
+    margin:10px 0;
+    padding:15px;
+    text-align:center;
+}
+
+/* topFrame */
+#top_nav1 {
+    width:100%;
+    height:50px;
+    background:#278296;
+    border-bottom:1px solid #fff;
+    overflow:hidden;
+}
+
+#top_nav2 {
+    width:100%;
+    height:24px;
+    line-height:24px;
+    background:#80BDCB;
+    overflow:hidden;
+}
+
+#top_nav2 ul li {
+    border-left:1px solid #BBDDE5;
+    border-right:1px solid #192E32;
+    float:left;
+}
+
+#top_nav2 ul .fix-spacel {
+    width:30px;
+    border-left:medium none;
+}
+
+#top_nav2 ul .fix-spacer {
+    border-right: medium none;
+}
+
+#top_nav2 ul li .nav2_list {
+    background:#9CCBD6;
+    color:#335B64;
+    display:block;
+    padding:0 20px;
+    font-weight:bold;
+}
+
+/* menuFrame */
+#menu_top {
+    background:#278296;
+    height: 21px;
+    padding-left: 10px;
+    text-align:left;
+}
+
+#menu_top .menu_top_hd {
+    background:#80BDCB;
+    border-right:2px solid #335B64;
+    cursor:pointer;
+    font-weight:bold;
+    line-height:20px;
+    padding:4px 15px 4px 18px;
+}
+
+#menu_main {
+    background:#ffffff;
+    border:1px solid #345C65;
+    margin:5px;
+    padding:5px;
+    text-align:left;
+}
+
+#menu_list ul li {
+    line-height:16px;
+    padding-left:16px;
+}
+
+#menu_list ul li a {
+    color:#335B64;
+}
+
+#menu_list ul .menulist_ico {
+    line-height:20px;
+    background:url(../images/admin_list_ico2.gif) 0 3px no-repeat;
+    font-weight: bold;
+}
+
+#menu_list ul li ul .menu_item {
+    background: url(../images/menu_arrow.gif) no-repeat 0 3px;
+    font-weight:normal;
+}
+
+/* mainFrame */
+.admin_hd {
+    background:#F4FAFB;
+    border:1px solid #BBDDE5;
+    color:#9CACAF;
+    padding:10px;
+    font-weight:bold;
+}
+
+.list_div {
+    background:#EEF8F9;
+    border:1px solid #BBDDE5;
+}
+
+.list_div th.group-title {
+    text-align: left;
+    font-weight:normal;
+}
+
+.list_div th {
+    height:24px;
+    background:url(../images/th_bg.gif) repeat-x;
+    font-size:12px;
+    font-weight:700;
+    text-align:center;
+    color:#444;
+    padding-left:5px;
+}
+
+.list_div td {
+    line-height: 22px;
+    padding:5px;
+}
+
+.list_div td {
+    background:#fff;
+}
+
+.btn_sty {
+    border: 1px solid #337FE5;
+    background:#9CCBD6;
+    height:20px;
+    line-height:20px;
+    padding: 0 5px;
+    text-align: center;
+    display: inline-block;
+    font-weight: normal;
+}
+
+.btn_sty:hover {
+    background: #E8EFFF;
+}
+
+/* login */
+#login_div, #info_div {
+    width:100%;
+    padding-left:32%;
+    background:#278296;
+}
+
+#login_div #login {
+    width:500px;
+    border:1px solid #ccc;
+    float:left;
+    text-align:left;
+}
+
+#login_div #login tr {
+    height:25px;
+    line-height:25px;
+    color:#fff;
+}
+
+#login_div #login tr td .input_text {
+    width:140px;
+    height:18px;
+    line-height:18px;
+    border:1px solid #ccc;
+    padding:0 2px 0 2px;
+}
+
+#login_div #login tr td input.button {
+    background:url(../images/button_bg.gif) repeat-x;
+    border:1px solid #2D5082;
+    margin:2px;
+    padding:2px 8px 0;
+}
+
+#info {
+    width:500px;
+}
+
+.pagestyle {
+    border:1px solid #ccc;
+    padding:2px 5px 2px 5px;
+    margin-right:5px;
+}
+
+.current {
+    padding:2px 10px 2px 10px;
+}

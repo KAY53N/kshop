@@ -1,0 +1,73 @@
+<include file="Public:header" />
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+            <div>
+                <span class="fb f13">您好，
+                <php>
+                    if(Cookie::is_set('member_name'))
+                    {
+                        echo Cookie::get('member_name');
+                    }
+                    else
+                    {
+                        echo Cookie::get('user_name');
+                    }
+                </php>
+                ，欢迎进入用户中心</span>
+                <span class="fr">您目前是：<span class="f_light_blue">[普通会员]</span></span>
+            </div>
+            
+            <table cellpadding="0" border="0" cellspacing="0" width="100%" class="clearfix mt10">
+
+            <tr>
+                <td align="left" class="pr30 f_deep_gray lh30 bb">您的帐户目前总积分：<span class="f_yellow"><{$data.allPoints}>分</span><span class="fr"><a href="###" class="underline">查看积分历史</a></span></td>
+                <td align="left" class="pr30 f_deep_gray lh30 bb">您的订单交易总数量：<span class="f_yellow"><{$data.orderAllNum}>个</span><span class="fr"><a href="__APP__/member/orders" class="underline">进入订单列表</a></span></td>
+            </tr>
+
+            <tr>
+                <td align="left" class="pr30 f_deep_gray lh30 bb">预存款余额：<span class="f_yellow"><{$data.allPrice}>元</span><span class="fr"><a href="###" class="underline">充值</a></span></td>
+                <td align="left" class="pr30 f_deep_gray lh30 bb">已通过审核的评论与咨询：<span class="f_yellow"><{$data.allCommentNum}>个</span><span class="fr"><a href="__APP__/member/comment" class="underline">立即查看</a></span></td>
+            </tr>
+
+            </table>
+
+            <h3 class="mb10">我的订单</h3>
+
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="memberlist">
+            <tr class="lh17">
+                <th class="bl pl10 ta_l">商品名称</th>
+                <th align="center">订单号</th>
+                <th align="center">下单日期</th>
+                <th align="center">总金额</th>
+                <th class="br ta_c">订单状态</th>
+            </tr>
+
+            <empty name="data.order_list">
+                <tr><td colspan="5" align="center">没有订单信息</td></tr>
+            <else />
+                <volist name="data.order_list" id="vo">
+                    <tr>
+                        <td class="bl bb padding_5 ta_l" width="40%"><a href="__APP__/member/member_orders_details/id/<{$vo.id}>"><{$vo.title_info|str_replace='-~-','<br><br>',###}></a></td>
+                        <td class="bb padding_5 ta_c"><a href="__APP__/member/member_orders_details/id/<{$vo.id}>"><{$vo.order_No}></a></td>
+                        <td class="bb padding_5 ta_c"><{$vo.add_date|date="Y-m-d H:i:s",###}></td>
+                        <td class="bb padding_5 ta_c">￥<{$vo.price}></td>
+                        <td class="point bb br padding_5 ta_c"><a href="__APP__/member/member_orders_details/id/<{$vo.id}>" class="fb" target="_blank"><switch name="vo.status" ><case value="0"><span class="f_deep_gray">等待付款</span></case><case value="1"><span class="f_green">已付款，等待发货</span></case><case value="2"><span class="f_light_blue">已发货，等待收货</span></case><case value="3"><span class="f_red">交易成功</span></case></switch></a></td>
+                    </tr>
+                </volist>
+            </empty>
+
+            </table>
+ 
+            <div class="fr mr10 mt10"><a href="__APP__/member/orders" class="f12 fb">更多订单&gt;&gt;</a></div>
+
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

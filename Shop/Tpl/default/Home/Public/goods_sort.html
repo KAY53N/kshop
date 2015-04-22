@@ -1,0 +1,51 @@
+<div class="shop_left">
+
+    <div class="clearfix">
+
+        <div class="warp_l">
+            <div class="border1_t"><h3>商品分类</h3></div>
+
+            <div class="border1_c">
+                <div class="DuceDropNavs">
+                    <ul>
+
+                        <volist name="data.one_list" id="vo">
+                            <li class="m-cat-depth-1">
+                                <a class="depth-1" href=###><em><{$vo.name}></em></a>
+                                <ul class="m-cat-popup" style="width:420px;">
+                                    <ul class="m-cat-drop-2">
+                                        <li class="m-cat-depth-0">
+                                            <a href="###"><{$vo.name}></a>
+                                            <ul class="m-cat-drop-3">
+                                                <php>
+                                                    for($i=0; $i<count($data['sort_list']); $i++)
+                                                    {
+                                                    if(substr_count($data['sort_list'][$i]["path"],"-") ==1 && $data['sort_list'][$i]["pid"] == $vo["id"])
+                                                    {
+                                                    echo '<li class="m-cat-depth-2"><a href="__APP__/goodslist/index/id/'.$data['sort_list'][$i]["id"].'" >'.$data['sort_list'][$i]["name"].'</a></li>';
+                                                    }
+                                                    }
+                                                </php>
+                                            </ul>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <em></em>
+                                </ul>
+                            </li>
+                        </volist>
+
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="AdvBanner"><a href="###" target="_blank"><img src='../Public/images/55c47a09e79d191a.gif' style=""/></a></div>
+                <div class="GoodsCategoryWrap"><ul></ul></div>
+            </div>
+            <div class="border1_d"></div>
+        </div>
+    </div>
+
+    <div class="mt05"><a href="###"><img src="../Public/images/img/left_pic1.jpg" width="210" height="130" /></a></div>
+    <div class="mt05"><a href="###"><img src="../Public/images/img/left_pic2.jpg" width="210" height="100" /></a></div>
+</div>

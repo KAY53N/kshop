@@ -1,0 +1,39 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 添加管理员</span>
+        <span class="fr"><a href="<{:U('Admin-Admin/inxex')}>" class="btn_sty">管理员列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Admin/add_admin_sub')}>" method="post">
+            <table width="100%" bgcolor="White">
+                <tr>
+                    <td align="right">用户名</td>
+                    <td><input type="text" name="username" class="input_text" value="" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">Email地址</td>
+                    <td><input type="text" class="input_text" size="34" name="email" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">密  码</td>
+                    <td><input type="password" class="input_text" size="34" maxlength="18" name="password"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">&nbsp;</td>
+                    <td>
+                        <input type="submit" class="button" value="确定提交">&nbsp;&nbsp;&nbsp;
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

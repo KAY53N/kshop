@@ -1,0 +1,95 @@
+<include file="Public:header" />
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+  
+            <h3>个人信息</h3>
+            <form action="__APP__/member/save_setting" method="POST">
+            <table width="100%">
+
+            <tr height="30">
+                <td width="100" align="right">货币：</td>
+                <td><select><option>人民币</option></select></td>
+            </tr>
+
+            <tr height="30">
+                <td width="100" align="right"><span class="f_red">*</span>Email：</td>
+                <td><input type="text" name="email" class="text_input text_style" value="<{$data.selfInfo.email}>"/></td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">姓名：</td>
+                <td><input type="text" name="name" class="text_input text_style" value="<{$data.selfInfo.name}>"/></td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">性别：</td>
+                <td><input type="radio" name="gender" value="男" <if condition="$data['selfInfo']['gender'] eq '男'">checked=true<else /></if>/>男
+                <input type="radio" name="gender" value="女" <if condition="$data['selfInfo']['gender'] eq '女'">checked=true<else /></if> />女</td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">出生日期：</td>
+                <td><input type="text" name="birth_date" id="f_rangeStart" class="text_input text_style" maxlength="10" value="<{$data.selfInfo.birth_date}>" />
+                    <script type="text/javascript">
+                      new Calendar({
+                              inputField: "f_rangeStart",
+                              dateFormat: "%Y-%m-%d",
+                              trigger: "f_rangeStart",
+                              bottomBar: false,
+                              onSelect: function() { this.hide()}
+                      });
+                    </script>
+                </td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">地区：</td>
+                <td><input type="text" name="sel0" value="<{$data.selfInfo.sel0}>" />&nbsp;<input type="text" name="sel1" value="<{$data.selfInfo.sel1}>" />&nbsp;<input type="text" name="sel2" value="<{$data.selfInfo.sel2}>" /></td>
+            </tr>
+
+            <tr height="30">
+                <td width="100" align="right">联系地址：</td>
+                <td><input type="text" name="site" class="text_input text_style" value="<{$data.selfInfo.site}>" /></td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">邮编：</td>
+                <td><input type="text" name="zip_code" class="text_input text_style" value="<{$data.selfInfo.zip_code}>" /></td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">移动电话：</td>
+                <td><input type="text" name="mobile" class="text_input text_style" value="<{$data.selfInfo.mobile}>" /></td>
+            </tr>
+
+
+            <tr height="30">
+                <td width="100" align="right">固定电话：</td>
+                <td><input type="text" name="phone" class="text_input text_style" value="<{$data.selfInfo.phone}>" /></td>
+            </tr>
+
+            <tr height="30">
+                <td width="100" align="right"><input type="hidden" name="where_id" value="<{$data.selfInfo.id}>"></td>
+                <td><input type="submit" value="保存" class="btn_setting_save" /></td>
+            </tr>
+
+            </table>
+            </form>
+
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

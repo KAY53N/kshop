@@ -1,0 +1,112 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 添加商品</span>
+        <span class="fr"><a href="<{:U('Admin-Goods/index')}>" class="btn_sty">商品列表</a></span>
+    </div>
+
+    <div class="list_div">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Goods/upfile')}>" method="POST" enctype="multipart/form-data" onSubmit="return Validator.Validate(this,2)">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">商品名称：</td>
+                    <td><input type="text" name="title" class="input_text" style="width:350px" dataType="Require" msg="未填写商品名称" />&nbsp;<font color="red"><b>*</b></font>&nbsp;<span id="us"></span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品名称2：</td>
+                    <td><input type="text" name="title_info" class="input_text" style="width:350px" dataType="Require" msg="未填写商品名称2" />&nbsp;<font color="red"><b>*</b></font>&nbsp;<span id="us"></span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品货号：</td>
+                    <td><input type="text" name="item_No" class="input_text" style="width:150px" />&nbsp;<font color="Gray">如果您不输入商品货号，系统将自动生成一个唯一的货号。</font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品品牌：</td>
+                    <td>
+                        <select class="input_text" name="brand" dataType="Require"  msg="未选择商品品牌" style="padding:0px">
+                            <option>请选择</option>
+                            <volist name="data.sortList" id="vo">
+                                <option value="<{$vo.id}>"><php>for($i=0; $i<$vo["count"]*6; $i++){echo "&nbsp;";}</php>┗<{$vo.name}></option>
+                            </volist>
+                        </select>
+                        &nbsp;<font color="red"><b>*</b></font>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品重量：</td>
+                    <td><input type="text" name="weight" class="input_text" dataType="Number"  msg="未填写商品重量或，只能为数字!" style="width:150px" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">库存：</td>
+                    <td><input type="text" name="inventory" class="input_text" dataType="Number"  msg="未填写商品库存，只能为数字!" style="width:150px" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">市场价格：</td>
+                    <td><input type="text" name="market_price" class="input_text" dataType="Number"  msg="未填写市场价格，只能为数字!" style="width:150px" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">积分：</td>
+                    <td><input type="text" name="points" class="input_text" dataType="Require"  msg="未填写积分" style="width:150px" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">销售价格：</td>
+                    <td><input type="text" name="sell_price" class="input_text" dataType="Number"  msg="未填写销售价格，只能为数字!" style="width:150px" />&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片1：</td>
+                    <td><input type="file" name="file[]" dataType="Require"  msg="至少上传一张商品展示图"/>&nbsp;<font color="red"><b>*</b></font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片2：</td>
+                    <td><input type="file" name="file[]"/></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片3：</td>
+                    <td><input type="file" name="file[]"/></td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品展示图片4：</td>
+                    <td><input type="file" name="file[]"/></td>
+                </tr>
+
+                <tr>
+                    <td align="right">是否上架：</td>
+                    <td>
+                        <select name="putaway" class="input_text">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">商品详情：</td>
+                    <td><textarea id="details" name="details" style="width:95%;height:400px"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" class="button" value=" 确定 " >
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

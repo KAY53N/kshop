@@ -1,0 +1,46 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 评论列表</span>
+        <span class="fr"><a href="<{:U('Admin-Comment/add_comment')}>" class="btn_sty">添加评论</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form action="<{:U('Admin/Comment/del_comment')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="3" id="table">
+                <tr>
+                    <th width="10%">
+                        <input type="checkbox" id="more_checkbox">
+                        <a href="###" title="点击对列表排序">编号<img src="../Public/images/sort_desc.gif"></a>
+                    </th>
+                    <th width="45%">咨询内容</th>
+                    <th width="15%">用户</th>
+                    <th width="15%">咨询时间</th>
+                    <th width="15%">操作</th>
+                </tr>
+
+
+                <volist name="data.list" id="vo" key="k">
+                <tr>
+                    <td id="id"><input type="checkbox" class="check" name="<{$k}>" value="<{$vo.id}>"><{$vo.id}></td>
+                    <td><{$vo.content}></td>
+                    <td align="center"><{$vo.author}></td>
+                    <td align="center"><{$vo.add_date|date="Y-m-d H:i:s",###}></td>
+                    <td align="center">
+                    <a title="编辑" href="<{:U('Admin-Comment/edit_comment/id/').$vo['id']}>"><img width="16" height="16" border="0" src="../Public/images/icon_edit.gif"></a>&nbsp;
+                    <a title="移除" href="<{:U('Admin-Comment/del_comment/id/').$vo['id']}>" id="del"><img width="16" height="16" border="0" src="../Public/images/icon_drop.gif"></a>
+                    </td>
+                </tr>
+                </volist>
+
+                <tr>
+                    <td><input type="submit" class="button" id="more_del" value="删除评论" /></td>
+                    <td colspan="4" align="right"><{$data.show}></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

@@ -1,0 +1,35 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 编辑分类</span>
+        <span class="fr"><a href="<{:U('Admin-Sort/index')}>" class="btn_sty">分类列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Sort/edit_sort_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)" enctype="multipart/form-data">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">上级分类：</td>
+                    <td>
+                        <select name="pid" disabled="true">
+                            <option><empty name="data['active']['name']">顶级<else /><{$data.active.name}></empty></option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">分类名称：</td>
+                    <td><input type="text" name="name" class="input_text news_title" value="<{$data.name.name}>"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td><input type="hidden" name="id" value="<{$data.name.id}>"></td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

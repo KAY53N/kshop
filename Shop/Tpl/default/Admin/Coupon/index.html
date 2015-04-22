@@ -1,0 +1,80 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 优惠券列表</span>
+        <span class="fr"><a href="<{:U('Admin-Coupon/add_coupon')}>" class="btn_sty">添加优惠券</a></span>
+    </div>
+
+    <div class="admin_hd clearfix mt10">
+        <form style="width:300px;float:left" action="<{:U('Admin-Coupon/search_discount')}>" method="GET">
+            <img width="26" height="22" style="vertical-align:middle" border="0" alt="SEARCH" src="../Public/images/icon_search.gif">
+            &nbsp;折扣 &nbsp;
+            <select name="condition">
+                <option value="lt">小于</option>
+                <option value="gt">大于</option>
+                <option value="eq">等于</option>
+            </select>
+            <input type="text" name="keyword" class="text_input" size="5">&nbsp;
+            <input type="submit" value=" 搜索 ">
+        </form>
+
+        <form style="width:350px;float:left" action="<{:U('Admin-Coupon/search_date')}>" method="GET">
+            &nbsp;有效期 &nbsp;
+            <select name="condition">
+                <option value="lt">小于</option>
+                <option value="gt">大于</option>
+                <option value="eq">等于</option>
+            </select>
+            <input type="text" name="keyword" class="text_input" id="f_rangeStart" size="10">&nbsp;
+                <script type="text/javascript">
+                new Calendar({
+                      inputField: "f_rangeStart",
+                      dateFormat: "%Y-%m-%d",
+                      trigger: "f_rangeStart",
+                      bottomBar: false,
+                      onSelect: function() { this.hide()}
+                });
+                </script>
+            <input type="submit" value=" 搜索 ">
+        </form>
+    </div>
+
+    <div class="list_div mt10">
+        <form action="<{:U('Admin-coupon/del_coupon')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="3" id="table">
+                <tr>
+                    <th width="5%">
+                    <input type="checkbox" id="more_checkbox">编号</th>
+                    <th width="15%">名称</th>
+                    <th width="5%">折扣</th>
+                    <th width="25%">优惠码</th>
+                    <th width="15%">有效期</th>
+                    <th width="15%">可用状态 / 赠送状态</th>
+                    <th width="20%">操作</th>
+                </tr>
+
+                <volist name="data.list" id="vo" key="k">
+                <tr>
+                    <td id="id"><input type="checkbox" class="check" name="<{$k}>" value="<{$vo.id}>"><{$vo.id}></td>
+                    <td><{$vo.name}></td>
+                    <td><{$vo.discount}></td>
+                    <td><{$vo.coupon_code}></td>
+                    <td align="center"><{$vo.validity_date|date="Y-m-d",###}></td>
+                    <td align="center"><if condition="$vo['status'] eq 1">可用<else />不可用</if>&nbsp;/&nbsp;<if condition="$vo['user_id'] gt 0">已赠送<else />未赠送</if></td>
+                    <td class="caozuo" align="center">
+                    <a title="编辑" href="<{:U('Admin-Coupon/edit_coupon/id/').$vo['id']}>">编辑</a>
+                    <a title="赠送" href="<{:U('Admin-Coupon/give_coupon/id/').$vo['id']}>">赠送</a>
+                    <a title="移除" href="<{:U('Admin-Coupon/del_coupon/id/').$vo['id']}>" id="del">移除</a>
+                    </td>
+                </tr>
+                </volist>
+
+                <tr>
+                    <td><input type="submit" class="button" id="more_del" value="删除优惠码" /></td>
+                    <td colspan="6" align="right"><{$data.show}></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+<include file="Public:footFrame" />

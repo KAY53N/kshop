@@ -1,0 +1,46 @@
+.jqzoom{
+border:1px solid #CCCCCC;
+float:left;
+position:relative;
+padding:0px;
+cursor:default;
+}
+/*Download by http://www.codefans.net*/
+.jqzoom{
+float:left;
+}
+
+
+div.zoomdiv {
+z-index                 : 100;
+position                : absolute;
+top:0px;
+left:0px;
+width                   : 305px;
+height                  : 310px;
+background: #ffffff;
+border:1px solid #CCCCCC;
+display:none;
+text-align: center;
+overflow: hidden;
+
+
+}
+
+div.jqZoomPup {
+z-index                 : 10;
+visibility              : hidden;
+position                : absolute;
+top:0px;
+left:0px;
+/*width                   : 50px;
+
+height                  : 50px;
+*/
+border: 1px solid #aaa;
+background: #ffffff url(../images/zoomlens.gif) 50% top  no-repeat;
+opacity: 0.3;
+-moz-opacity: 0.3;
+-khtml-opacity: 0.3;
+filter: alpha(Opacity=30);
+}

@@ -1,0 +1,60 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 商品列表</span>
+        <span class="fr"><a href="<{:U('Admin-Goods/add_goods')}>" class="btn_sty">添加商品</a></span>
+    </div>
+
+    <div class="admin_hd clearfix mt10">
+        <form method="GET" action="<{:U('Admin-Goods/search_goods')}>">
+            <span class="mr10"><img width="26" height="22" border="0" src="../Public/images/icon_search.gif" alt="SEARCH" style="vertical-align:middle"></span>
+            <span class="mr10">关键字 &nbsp;<input type="text" class="text_input" name="keyword"></span>
+            <span><input type="submit" value=" 搜索 ">&nbsp;&nbsp;搜索条件：商品标题1或者标题2或者销售价格</span>
+        </form>
+    </div>
+
+    <div class="list_div mt10">
+        <form action="<{:U('Admin-Goods/del_goods')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="3">
+                <tr>
+                    <th>
+                        <input type="checkbox" id="more_checkbox">
+                        <a href="###" title="点击对列表排序">编号<img src="../Public/images/sort_desc.gif"></a>
+                    </th>
+                    <th>商品名称</th>
+                    <th>货号</th>
+                    <th>销售价格</th>
+                    <th>上架</th>
+                    <th>库存</th>
+                    <th>操作</th>
+                </tr>
+
+                <empty name="data.list"><tr><td colspan="7" align="center"><h3>未搜索到相关信息</h3></td></tr><else />
+                    <volist name="data.list" id="vo" key="k">
+                        <tr>
+                            <td id="id"><input type="checkbox" class="check" name="<{$k}>" value="<{$vo.id}>"><{$vo.id}></td>
+                            <td class="first-cell"><{$vo.title|msubstr=0,60}></td>
+                            <td><{$vo.item_No}></td>
+                            <td align="right"><{$vo.sell_price}></td>
+                            <td align="center">
+                                <if condition="$vo['putaway'] eq 1"><img src="../Public/images/yes.gif"><else /><img src="../Public/images/no.gif"></if>
+                            </td>
+                            <td align="center"><{$vo.inventory}></td>
+                            <td align="center">
+                                <a title="查看" href="<{:U('Home-Index/goods/id/').$vo['id']}>" target="_blank"><img width="16" height="16" border="0" src="../Public/images/icon_view.gif"></a>
+                                <a title="编辑" href="<{:U('Admin-Goods/edit_goods/id/').$vo['id']}>"><img width="16" height="16" border="0" src="../Public/images/icon_edit.gif"></a>
+                                <a title="删除商品" href="<{:U('Admin-Goods/del_goods/id/').$vo['id']}>" id="del"><img width="16" height="16" border="0" src="../Public/images/icon_drop.gif"></a>
+                            </td>
+                        </tr>
+                    </volist>
+                </empty>
+
+                <tr>
+                    <td><input type="submit" class="button" id="more_del" value="删除商品"/></td>
+                    <td colspan="6" align="right"><{$show}></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+<include file="Public:footFrame" />

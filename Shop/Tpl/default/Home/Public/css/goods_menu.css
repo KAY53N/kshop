@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Kshop导航菜单 */
+.m-cat-popup li {font-size:12px;}
+.border1_t h3 {color: #FFFFFF;font-size: 14px;line-height: 30px;text-align: center;}
+.GoodsCategoryWrap {line-height:24px;*line-height:23px;}
+.c-cat-depth-1 {background:none;}
+.c-cat-depth-1 a {color:#BD0000;padding-left:25px;background:url(../images/givbg30.gif) no-repeat left center;display:block;}
+.c-cat-depth-1 a:hover {color:#BD0000;}
+.c-cat-depth-2 {margin-left:15px;}
+.c-cat-depth-2 a {background:none;padding:0;margin:0;color:#333;display:inline;}
+.c-cat-depth-2 a:hover {color:#BD0000;}
+.warp_l {width:210px;float:left;overflow:hidden; text-align:left;}
+.warp_c {width:500px;float:left;margin-left:10px;overflow:hidden;}
+.warp_r {width:220px;float:right;overflow:hidden;}
+.warp_cr {width:730px;float:right;overflow:hidden;}
+#festivrl_l {width:98px;height:57px;float:left;margin-bottom:10px;background:url(../images/festivrl_l.jpg) no-repeat;}
+#festivrl_c {width:840px;height:41px;padding:8px 0;float:left;background:url(../images/festivrl_c.jpg) repeat-x;overflow:hidden;}
+#festivrl_r {width:12px;height:57px;float:right;background:url(../images/festivrl_r.jpg) no-repeat;}
+.warp_l2 {width:220px;float:left;margin-bottom:8px;overflow:hidden;}
+.warp_c2 {width:500px;float:left;overflow:hidden;}
+.border1_t {background: url(../images/border1_tf.gif) no-repeat scroll 0 0 transparent;height: 30px;}
+.border1_c {background: url(../images/border1_c.gif) repeat-y scroll 0 0 #FFFFFF;padding: 5px 10px;}
+.border1_d {background: url(../images/border1_tf.gif) no-repeat scroll 0 -30px transparent;height: 5px;overflow: hidden;}
+
+.DuceDropNavs { _float:left; padding:10px 20px 9px; } 
+.DuceDropNavs .h3 { height:32px; line-height:31px; background:url(../images/m_cat_icon.gif) no-repeat center 0; text-indent:-9999px; text-align:center; font-weight:700; } 
+.m-cat-depth-1 { *float:left; *width:100%; height:32px; border-top:1px solid #DADBE6; } 
+.m-cat-depth-1 .depth-1 { display:block; background:url(../images/m_cat_icon.gif) no-repeat 0 -33px; font-size:14px; height:30px; padding:1px 2px; cursor:pointer;} 
+.m-cat-depth-1 .depth-1 em { display:block; background:url(../images/m_cat_icon.gif) no-repeat right -67px; padding-left:40px; height:30px; line-height:29px; line-height:33px\9; overflow:hidden; font-style:normal; } 
+.m-cat-depth-1 a:hover { text-decoration:none; } 
+.m-cat-depth-1 .depth-1:hover em { font-weight:700; }
+.DuceDropNavs .current .depth-1 { background-color:#DADBE6; overflow:hidden;} 
+.DuceDropNavs .current .depth-1 em { background-position:-130px -66px; background-color:#FFF; font-weight:700; color:#C00; } .m-cat-popup { position:absolute; padding:4px 20px 8px; z-index:999; display:none; background:#FFF; border:2px solid #DADBE6; } 
+.m-cat-popup em { position:absolute; display:block; background:#FFF; width:5px; height:30px; top:0; left:-2px; } 
+.m-cat-popup a, .m-cat-popup span { display:block; height:20px; line-height:19px; line-height:22px\9; _line-height:19px; } .m-cat-drop-2 { width:100%; *padding-bottom:5px; } 
+.m-cat-drop-2 .m-cat-depth-0 { display:block; clear:both; font-weight:700; padding:3px 0 2px; }
+.m-cat-drop-2 .m-cat-depth-0 a { background:url(../images/m_cat_icon.gif) no-repeat 0 -99px; padding-left:12px; } 
+.m-cat-drop-2 .m-cat-depth-2 { float:left; margin-top:2px; width:25%; height:20px; overflow:hidden; } 
+.m-cat-drop-2 .m-cat-depth-2 a { background:url(../images/m_cat_icon.gif) no-repeat 0 -99px; padding-left:12px; font-weight:400; } 
+.m-cat-drop-2 .m-cat-depth-2 a:hover { background-color:#EEE; } 
+.m-cat-drop-2 .bold a { font-weight:700; } 
+.m-cat-drop-3 { width:100%; clear:both; } 
+.DuceDropNavs li a { color:#666; } 
+.DuceDropNavs span, .DuceDropNavs li a:hover { color:#C00; } 
+/* news.html 新闻页面 */
+.warp_l .TreeList .cat1 { border-bottom:1px dashed #BD0000;}
+.TreeList .cat1 { color:#000000; font-weight:700; padding-left:3px; height:28px; line-height:28px;}
+.warp_l .TreeList .cat2 { line-height:150%; margin:5px 0 0 10px; padding:0;}
+.warp_l .TreeList .cat1 a { background: url(../images/arrs2.gif) no-repeat scroll left center transparent; color: #BD0000; font-weight: bold; padding-left: 10px;}
+.warp_l .TreeList .cat2 a { background: url(../images/arrs.gif) no-repeat scroll left center transparent; border-bottom: medium none; font-weight: normal; margin:0; padding-left:10px;}

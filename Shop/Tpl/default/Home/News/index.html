@@ -1,0 +1,74 @@
+<include file="Public:header" />
+
+<div class="main clearfix">
+
+    <div class="shop_left">
+        <a href="###"><img src="http://www.lusen.com/images/20110730/b8d00b63f1fa29b8.gif" /></a>
+
+        <div class="warp_l">
+            <div class="border1_t">
+                <h3>帮助中心</h3>
+            </div>
+            <div class="border1_c">
+
+            <div class="TreeList">
+                <div class="cat1"><a href="###">购物指南</a></div>
+                <volist name="data.news_list" id="vo" offset="0" length='6'>
+                    <div class="cat2"><a href="__APP__/news/index/id/<{$vo.id}>"><{$vo.news_title}></a></div>
+                </volist>
+
+                <div class="cat1"><a href="###">支付方式</a></div>
+                <volist name="data.news_list" id="vo" offset="12" length='7'>
+                    <div class="cat2"><a href="__APP__/news/index/id/<{$vo.id}>"><{$vo.news_title}></a></div>
+                </volist>
+
+                <div class="cat1"><a href="###">配送方式</a></div>
+                <volist name="data.news_list" id="vo" offset="19" length='4'>
+                    <div class="cat2"><a href="__APP__/news/index/id/<{$vo.id}>"><{$vo.news_title}></a></div>
+                </volist>
+
+                <div class="cat1"><a href="###">售后服务</a></div>
+                <volist name="data.news_list" id="vo" offset="6" length='6'>
+                    <div class="cat2"><a href="__APP__/news/index/id/<{$vo.id}>"><{$vo.news_title}></a></div>
+                </volist>
+
+                <div class="cat1"><a href="__APP__/news/news_list">Kshop特色</a></div>
+                <div class="cat2"><a href="__APP__/news/news_list">货到付款-24小时送到</a></div>
+                <div class="cat2"><a href="__APP__/news/index/id/102">7天退换货</a></div>
+                <div class="cat2"><a href="__APP__/news/news_list">Kshop大事记</a></div>
+                <div class="cat2"><a href="__APP__/news/index/id/106">关于Kshop</a></div>
+                <div class="cat2"><a href="__APP__/news/news_list/">延长保修</a></div>
+
+                <div class="cat1"><a href="__APP__/news/news_list">Kshop新闻</a></div>
+                <div class="cat2"><a href="__APP__/news/news_list">Kshop公告栏</a></div> </div>
+
+            </div>
+            <div class="border1_d"></div>
+        </div>
+
+        <a href="###"><img src="http://www.lusen.com/images//20110327/90ec7f4c0d041aab.gif" /></a>
+
+    </div>
+
+
+    <div class="product fr">
+        <div class="location pl10 ml10">
+        您当前的位置： <a href="__APP__">首页</a> » <a href="__APP__/news/news_list">Kshop公告</a> » <{$data.list.news_title}>
+        </div>
+
+        <h3 class="ta_c"><{$data.list.news_title}></h3>
+        <p class="ta_c f_gray mt10">发布日期：<{$data.list.news_date}></p>
+
+        <div class="mt10 mb10 bb"></div>
+
+
+        <div class="mt10 lh24">
+        <{$data.list.news_con}>
+        </div>
+
+    </div>
+
+</div>
+
+ 
+<include file="Public:footer" />

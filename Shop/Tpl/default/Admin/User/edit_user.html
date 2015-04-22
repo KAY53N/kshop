@@ -1,0 +1,140 @@
+<include file="Public:headerFrame" />
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 编辑会员</span>
+        <span class="fr"><a href="<{:U('Admin-User/inxex')}>" class="btn_sty">会员列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-User/edit_user_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)">
+            <table width="100%" bgcolor="White">
+                <tr>
+                    <td align="right">会员名称:</td>
+                    <td><{$data.userInfo.username}></td>
+                </tr>
+
+                <tr>
+                    <td align="right">可用资金:</td>
+                    <td>￥<{$data.userInfo.available_funds|sprintf="%01.2f",###}>元 <a href="account_log.php?act=list&amp;user_id=8&amp;account_type=user_money">[ 查看明细 ]</a> </td>
+                </tr>
+
+                <tr>
+                    <td align="right">冻结资金:</td>
+                    <td>￥<{$data.userInfo.blocked_funds|sprintf="%01.2f",###}>元 <a href="account_log.php?act=list&amp;user_id=8&amp;account_type=frozen_money">[ 查看明细 ]</a> </td>
+                </tr>
+
+                <tr>
+                    <td align="right"><a title="点击此处查看提示信息" id="help" href="###"><img width="16" height="16" border="0" alt="点击此处查看提示信息" src="../Public/images/notice.gif"></a> 等级积分:</td>
+                    <td><{$data.userInfo.grade_points}>&nbsp;&nbsp;<a href="###">[ 查看明细 ]</a><span class="help" style="display:none">等级积分是一种累计的积分，系统根据该积分来判定用户的会员等级。</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right"><a title="点击此处查看提示信息" id="help" href="###"><img width="16" height="16" border="0" alt="点击此处查看提示信息" src="../Public/images/notice.gif"></a> 消费积分:</td>
+                    <td><{$data.userInfo.consumption_points}>&nbsp;&nbsp;<a href="###">[ 查看明细 ]</a><span class="help" style="display:none">消费积分是一种站内货币，允许用户在购物时支付一定比例的积分。</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">邮件地址:</td>
+                    <td><input type="text" value="<{$data.userInfo.email}>" name="email" dataType="Email" msg="Email格式不正确"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">新密码:</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">姓名:</td>
+                    <td><input type="text" size="20" maxlength="20" name="name" value="<{$data.userInfo.name}>" /></td>
+                </tr>
+
+                <tr>
+                    <td align="right">性别:</td>
+                    <td>
+                        <php>
+                        if($data['userInfo']['gender'] == '男')
+                        {
+                            echo '<input type="radio" value="男" name="gender" checked="true">&nbsp;男&nbsp;<input type="radio" value="女" name="gender">&nbsp;女&nbsp;';
+                        }
+                        else if($data['userInfo']['gender'] == '女')
+                        {
+                            echo '<input type="radio" value="男" name="gender">&nbsp;男&nbsp;<input type="radio" value="女" name="gender" checked="true">&nbsp;女&nbsp;';
+                        }
+                        else
+                        {
+                            echo '<input type="radio" value="男" name="gender">&nbsp;男&nbsp;<input type="radio" value="女" name="gender">&nbsp;女&nbsp;';
+                        }
+                        </php>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">出生日期:</td>
+                    <td>
+                        <input type="text" name="birth_date" size="25" id="f_rangeStart" dataType="Date" msg="生日日期不存在" value="<{$data.userInfo.birth_date}>" />
+                        <script type="text/javascript">
+                        new Calendar({
+                              inputField: "f_rangeStart",
+                              dateFormat: "%Y-%m-%d",
+                              trigger: "f_rangeStart",
+                              bottomBar: false,
+                              onSelect: function() { this.hide()}
+                        });
+                        </script>
+                        <span class="red">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">省－市－县:</td>
+                    <td>
+                    <input type="text" name="sel0" value="<{$data.userInfo.sel0}>">-<input type="text" name="sel1" value="<{$data.userInfo.sel1}>">-<input type="text" name="sel2" value="<{$data.userInfo.sel2}>">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">地址:</td>
+                    <td>
+                        <input type="text" name="site" value="<{$data.userInfo.site}>">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">邮编:</td>
+                    <td><input type="text" name="zip_code" value="<{$data.userInfo.zip_code}>"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">家庭电话:</td>
+                    <td><input type="text" value="<{$data.userInfo.phone}>" class="inputBg" size="40" name="phone"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">手机:</td>
+                    <td><input type="text" value="<{$data.userInfo.mobile}>" class="inputBg" size="40" name="mobile"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">提问:</td>
+                    <td><input type="text" name="question" value="<{$data.userInfo.question}>"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">回答:</td>
+                    <td><input type="text" name="answer" value="<{$data.userInfo.answer}>"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">&nbsp;</td>
+                    <td>
+                        <input type="hidden" value="<{$data.userInfo.id}>" name="id">
+                        <input type="submit" name="Submit" class="button" value=" 确定 ">
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

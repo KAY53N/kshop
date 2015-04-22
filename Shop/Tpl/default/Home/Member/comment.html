@@ -1,0 +1,43 @@
+<include file="Public:header" />
+
+<include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+
+            <h3 class="padding_10">评论与咨询</h3>
+
+            <volist name="data.commentList" id="vo">
+                <div class="clearfix mb15">
+                    <div class="border1_blue bg_light_blue padding_5">
+                        <div>
+                            <span class="ico_questions f_white">提问</span>
+                            <span class="f_yellow"><{$vo.author}>&nbsp;&nbsp;</span>说：
+                            <span class="f_deep_gray"><{$vo.add_date|date="Y-m-d H:i:s",###}></span>
+                        </div>
+                        <div class="mt05"><{$vo.content}></div>
+                    </div>
+
+                    <php>if(!empty($vo["reply"])){</php>
+
+                    <div class="border1_blue bg_white padding_5" style="border-top:none;">
+                        <div class=" lh20">
+                            <span class="ico_answer f_white">回答</span>
+                            <span class="f_yellow">管理员</span>
+                            说：
+                            <span class="f_deep_gray"><{$vo.reply_date|date="Y-m-d H:i:s",###}></span>
+                        </div>
+                        <div class="mt05"><{$vo.reply}></div>
+                    </div>
+                    <php>}</php>
+                </div>
+            </volist>
+
+            <div id="pageNav" class="clearfix mt10"><{$data.show}></div>
+
+        </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

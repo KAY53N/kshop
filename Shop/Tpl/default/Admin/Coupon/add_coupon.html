@@ -1,0 +1,139 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 添加优惠券</span>
+        <span class="fr"><a href="<{:U('Admin-Coupon/index')}>" class="btn_sty">优惠券列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" action="<{:U('Admin-Coupon/add_coupon_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)" enctype="multipart/form-data">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td height="30" colspan="2"><span class="require-field">此处生成的每个优惠码只可使用一次</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">名称：</td>
+                    <td><input type="text" name="name" class="input_text news_title" dataType="Require" msg="名称不存在" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">折扣：</td>
+                    <td><input type="text" name="discount" class="input_text news_title" style="width:50px" dataType="Require" msg="折扣不存在" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">随机生成：</td>
+                    <td>
+                        <select name="num" class="input_text news_title" dataType="Require"  msg="随机生成未选择" >
+                            <option value="5">5个</option>
+                            <option value="10">10个</option>
+                            <option value="20">20个</option>
+                            <option value="50">50个</option>
+                        </select>
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">有效期：</td>
+                    <td>
+                        <input type="text" name="validity_date"class="input_text news_title" id="f_rangeStart" dataType="Require" msg="有效期不存在" />
+                        <span class="require-field">*</span>
+                        <script type="text/javascript">
+                        new Calendar({
+                            inputField: "f_rangeStart",
+                            dateFormat: "%Y-%m-%d",
+                            trigger: "f_rangeStart",
+                            bottomBar: false,
+                            onSelect: function() { this.hide()}
+                        });
+                        </script>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">状态：</td>
+                    <td>
+                        <select name="status" class="input_text news_title" dataType="Require"  msg="状态未选择">
+                        <option value="1">可用</option>
+                        <option value="0">不可用</option>
+                        </select>
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">&nbsp;</td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+
+
+    <div class="list_div mt10">
+
+        <form name="theForm" action="<{:U('Admin-Coupon/add_coupon_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)" enctype="multipart/form-data">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td height="30" colspan="2"><span class="require-field">此处手动添加单个优惠码</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">名称：</td>
+                    <td><input type="text" name="name" class="input_text news_title" dataType="Require" msg="名称不存在" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">优惠码：</td>
+                    <td><input type="text" name="coupon_code" class="input_text news_title" dataType="Require" msg="名称不存在" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">折扣：</td>
+                    <td><input type="text" name="discount" class="input_text news_title" style="width:50px" dataType="Require" msg="折扣不存在" /><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">有效期：</td>
+                    <td>
+                        <input type="text" name="validity_date" class="input_text news_title" id="date" dataType="Require" msg="有效期不存在" />
+                        <span class="require-field">*</span>
+                        <script type="text/javascript">
+                        new Calendar({
+                              inputField: "date",
+                              dateFormat: "%Y-%m-%d",
+                              trigger: "date",
+                              bottomBar: false,
+                              onSelect: function() { this.hide()}
+                        });
+                        </script>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">状态：</td>
+                    <td>
+                        <select name="status" class="input_text news_title" dataType="Require"  msg="状态未选择">
+                            <option value="1">可用</option>
+                            <option value="0">不可用</option>
+                        </select>
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

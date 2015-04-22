@@ -1,0 +1,66 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 商店设置</span>
+    </div>
+
+
+    <div class="list_div mt10">
+
+        <form name="theForm" action="<{:U('Admin-Shopset/editShopSet')}>" method="POST" enctype="multipart/form-data">
+            <table width="100%" bgcolor="White">
+
+                <tr>
+                    <td>商店名称:</td>
+                    <td><input type="text" name="web_name" value="<{$data.info.web_name}>" /></td>
+                </tr>
+
+                <tr>
+                    <td>商店标题:</td>
+                    <td><input type="text" name="web_title" value="<{$data.info.web_title}>"></td>
+                </tr>
+
+                <tr>
+                    <td>商店描述:</td>
+                    <td><input type="text" name="web_descripion" value="<{$data.info.web_descripion}>" /></td>
+                </tr>
+
+                <tr>
+                    <td>商店关键字:</td>
+                    <td><input type="text" name="web_keyword" value="<{$data.info.web_keyword}>" /></td>
+                </tr>
+
+                <tr>
+                    <td>商店logo:</td>
+                    <td><input type="file" name="file" /></td>
+                </tr>
+
+                <tr>
+                    <td>客服中心电话工作时间:</td>
+                    <td><input type="text" name="work_time" value="<{$data.info.work_time}>" /></td>
+                </tr>
+
+                <tr>
+                    <td>客服中心留言回复:</td>
+                    <td><input type="text" name="reply_time" value="<{$data.info.reply_time}>" /></td>
+                </tr>
+
+                <tr>
+                    <td>ICP证书或ICP备案证书号:</td>
+                    <td><input type="text" name="icp" value="<{$data.info.icp}>" /></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td align="left">
+                        <input type="hidden" name="conditionId" value="<{$data.info.id}>">
+                        <input type="submit" class="button" value=" 确定 ">
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

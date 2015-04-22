@@ -1,0 +1,156 @@
+<include file="Public:header" />
+<link type="text/css" rel="stylesheet" href="../Public/css/jqzoom.css" />
+<script type="text/javascript" src="../Public/js/form-class.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.jqzoom.js"></script>
+<script type="text/javascript" src="../Public/js/goods.js"></script>
+
+<div class="main clearfix">
+
+    <include file="Public:goods_sort" />
+
+    <div class="product fr">
+        <div class="location pl10 ml10">
+        您当前的位置： <a href="__APP__">首页</a> » <a href="###"><{$data['location'][0]["name"]}></a> » <{$data['location'][1]["name"]}> »
+        </div>
+
+        <div class="fl">
+
+            <div class="goods_pic">
+                <div class="goods_pic_detail">
+                <div class="jqzoom"><empty name="data['g_list']['pic_one']"><else /><img width="305" height="310" src="__ROOT__/<{$data.g_list.path}>z_<{$data.g_list.pic_one}>" jqimg="__ROOT__/<{$data.g_list.path}>d_<{$data.g_list.pic_one}>" /></empty></div>
+                </div>
+
+                <div class="clearfix mt10" id="zoomPicList">
+
+                <empty name="data['g_list']['pic_one']"><else /><span class="goods_min_pic_click"><a href="###"><img width="70" height="70" src="__ROOT__/<{$data.g_list.path}>x_<{$data.g_list.pic_one}>" /></a></span></empty>
+
+                <empty name="data['g_list']['pic_two']"><else /><span class="goods_min_pic"><a href="###"><img width="70" height="70" src="__ROOT__/<{$data.g_list.path}>x_<{$data.g_list.pic_two}>" /></a></span></empty>
+
+                <empty name="data['g_list']['pic_three']"><else /><span class="goods_min_pic"><a href="###"><img width="70" height="70" src="__ROOT__/<{$data.g_list.path}>x_<{$data.g_list.pic_three}>" /></a></span></empty>
+
+                <empty name="data['g_list']['pic_four']"><else /><span class="goods_min_pic"><a href="###"><img width="70" height="70" src="__ROOT__/<{$data.g_list.path}>x_<{$data.g_list.pic_four}>" /></a></span></empty>
+
+                </div>
+            </div>
+
+
+            <div class="product_canshu">
+                <form action="__APP__/cart/index" method="POST" <php>if($data['g_list']['inventory'] <= 0){echo 'onsubmit="return false;"';}</php> >
+                    <h3 class="f16 f_black lh24 fb"><{$data.g_list.title}></h3>
+
+                    <p class="mt20 pb10 f_light_blue bb_dotted"><{$data.g_list.title_info}></p>
+
+                    <ul class="canshu_peizhi clearfix bb_dotted">
+                        <li><span>货　　号：</span><{$data.g_list.item_No}></li>
+                        <li><span>品   牌：</span><{$data['location'][1]["name"]}></li>
+                        <li><span>商品重量：</span><{$data.g_list.weight}>克</li>
+                        <li><span>库　　存：</span><{$data.g_list.inventory}></li>
+                        <li><span>市场价格：</span><{$data.g_list.market_price}></li>
+                        <li><span>积   分：</span><{$data.g_list.points}></li>
+                    </ul>
+
+                    <div class="pt15 pb15 bb"><span>销售价：</span><span class="f_red f16"> ￥<{$data.g_list.sell_price}></div>
+
+
+                    <ul class="border1_gray bg_bisque padding_10 mt10">
+                        <li class="bb_solid_orange pt05 pb10"><span>购买数量：</span><input type="text" name="buy_num" size="5" value="1" /></li>
+                        <li class="pt10">
+                        <input type="hidden" name="goods_id" value="<{$data.g_list.id}>" />
+                        <input type="submit" class="btn_fastbuy<php>if($data['g_list']['inventory'] <= 0){echo '_empty';}</php>" value="购买" />
+                        <input type="submit" class="btn_cart<php>if($data['g_list']['inventory'] <= 0){echo '_empty';}</php> ml30" value="加入购物车" />
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="shops_xiangqing">
+            <div class="clearfix bb ta_c mb20" id="goods_tab">
+                <span class="goods_tab_active">商品详情</span>
+                <span class="goods_tab">购买咨询</span>
+            </div>
+
+
+            <div class="clearfix padding_10 shopCon">
+                <{$data.g_list.details}>
+            </div>
+
+            <div class="clearfix border1_gray padding_10 bg_gray lh20 shopCon" style="display:none">
+
+                    <volist name="data.commentData" id="vo">
+                    <div class="clearfix mb15">
+                        <div class="border1_blue bg_light_blue padding_5">
+                            <div>
+                                <span class="ico_questions f_white">提问</span>
+                                <span class="f_yellow"><{$vo.author}>&nbsp;&nbsp;</span>说：
+                                <span class="f_deep_gray"><{$vo.add_date|date="Y-m-d H:i:s",###}></span>
+                            </div>
+                            <div class="mt05"><{$vo.content}></div>
+                        </div>
+
+                        <php>if(!empty($vo["reply"])){</php>
+
+                        <div class="border1_blue bg_white padding_5" style="border-top:none;">
+                            <div class=" lh20">
+                                <span class="ico_answer f_white">回答</span>
+                                <span class="f_yellow">管理员</span>
+                                说：
+                                <span class="f_deep_gray"><{$vo.reply_date|date="Y-m-d H:i:s",###}></span>
+                            </div>
+                            <div class="mt05"><{$vo.reply}></div>
+                        </div>
+                        <php>}</php>
+                    </div>
+                    </volist>
+
+                    <div id="pageNav"><{$data.show}></div>
+
+                    <!---发表咨询---->
+                    <div class="clearfix mt10 f12">
+                        <h3>发表咨询</h3>
+                        <div class="mt05">[咨询]<{$data.g_list.title}></div>
+                        <div class="border1_gray padding_10 bg_white mt10">
+                            <form action="<{:U('Home-Goods/add_comment')}>" method="POST" onSubmit="return Validator.Validate(this,2)">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                                <tr>
+                                    <td width="20%" align="right" valign="top"><b class="red">*</b>&nbsp;咨询内容：</td>
+                                    <td><textarea name="content" style="width:80%" rows="5" dataType="LimitB" min="8" max="200"  msg="咨询内容必须在[4,100]个字之内"></textarea></td>
+                                </tr>
+
+                                <tr height="35">
+                                    <td width="20%" align="right">联系方式：</td>
+                                    <td><input type="text" name="contact"><font color="gray">&nbsp;(可以是电话、email、qq等)</font></td>
+                                </tr>
+
+                                <tr height="35">
+                                    <td width="20%" align="right"><b class="red">*</b>&nbsp;验证码：</td>
+                                    <td><input type="text" name="code" size="5" dataType="Require" msg="验证码必填">&nbsp;<img style="vertical-align:bottom" src="__APP__/common/verify" onclick="this.src='__APP__/common/verify?'+Math.random()" /></td>
+                                </tr>
+
+                                <tr height="35">
+                                    <td width="20%" align="right">
+                                        <input type="hidden" name="author" value="<php>if(Cookie::is_set('user_name')){ echo Cookie::get('user_name');}else{ echo '未注册用户';}</php>" >
+                                        <input type="hidden" name="goods_id" value="<{$data.g_list.id}>">
+                                    </td>
+                                    <td><input type="submit" value="提交咨询"></td>
+                                </tr>
+
+                            </table>
+                            </form>
+                        </div>
+                    </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+ 
+<include file="Public:footer" />

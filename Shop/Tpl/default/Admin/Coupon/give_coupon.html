@@ -1,0 +1,47 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 赠送优惠券</span>
+        <span class="fr"><a href="<{:U('Admin-Coupon/index')}>" class="btn_sty">优惠券列表</a></span>
+    </div>
+
+    <div class="main_div mt10">
+        <table width="100%" bgcolor="white">
+            <tr>
+                <td align="right">赠送至用户：</td>
+                <td>
+                    <form action="<{:U('Admin-Coupon/give_coupon_sub')}>" method="POST">
+                    <input type="hidden" name="coupon_id" value="<{$data.couponInfo.id}>" />
+                    <input type="text" name="username" class="input_text news_title" dataType="Require" msg="用户名必填" /><span class="require-field">*</span><input type="submit" value=" 赠送 " />
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">名称：</td>
+                <td><{$data.couponInfo.name}></td>
+            </tr>
+
+            <tr>
+                <td align="right">折扣：</td>
+                <td><{$data.couponInfo.discount}>&nbsp;折</td>
+            </tr>
+
+            <tr>
+                <td align="right">优惠码：</td>
+                <td><{$data.couponInfo.coupon_code}></td>
+            </tr>
+
+            <tr>
+                <td align="right">有效期：</td>
+                <td><{$data.couponInfo.validity_date|date="Y-m-d",###}></td>
+            </tr>
+
+            <tr>
+                <td align="right">状态：</td>
+                <td><if condition="$data['couponInfo']['status'] eq 1"> 可用<else />不可用</if></td>
+            </tr>
+        </table>
+    </div>
+
+<include file="Public:footFrame" />

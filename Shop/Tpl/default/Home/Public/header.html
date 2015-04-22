@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$webInfo.web_title}></title>
+<meta name="Keywords" content="<{$webInfo.web_keyword}>" />
+<meta name="Description" content="<{$webInfo.web_descripion}>" />
+<link type="text/css" rel="stylesheet" href="../Public/css/goods_menu.css" />
+<link type="text/css" rel="stylesheet" href="../Public/css/css.css" />
+<script type="text/javascript" src="../Public/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.Kslider-1.2.js"></script>
+<script type="text/javascript" src="../Public/js/common.js"></script>
+<script type="text/javascript">
+    var _URL_ = '__URL__';
+    var _APP_ = '__APP__';
+    var _ROOT_ = '__APP__';
+</script>
+</head>
+
+<body>
+
+    <div class="top_msg padding_10">
+        <font color="red">(使用优惠码：xujiantao)</font>可一分钱购买商品，仅测试专用!
+        &nbsp;&nbsp;<font color="red">前端：Div+Css+jQuery 后端：Thinkphp&nbsp;&nbsp;所有前后端独自完成&nbsp;&nbsp;Finish Date：2012-1-21</font>
+    </div>
+
+    <div class="top">
+    <div class="main">
+        <div class="header">
+            <span class="logo"><a href="__APP__"><img src="__PUBLIC__/images/kshop_logo.gif" /></a></span>
+            <span class="fr h20 lh20">
+                合作伙伴:&nbsp;&nbsp;<a href="###">招行商城</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="###">建行商城</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="###">淘宝商城</a>-<a href="###">官方旗舰店</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="###">淘宝皇冠店</a> | <a href="###">收藏Kshop</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="###">官方微博</a> | <a href="###">关于Kshop</a>
+            </span>
+            <span class="fl mt25"><img src="../Public/images/top_im1.gif" /></span>
+            <span class="fr top_m2 mt05">
+                <div class="cart_div mt25 vertical_b">
+                    <span class="pl50 pt02 ml10 fl"><a href="__APP__/Cart/cart" class="f_white">购物车中有&nbsp;<span class="f_verdana f_yellow" id="memberCartNum"><php>if(Cookie::is_set("cart_num")){echo Cookie::get("cart_num");}else{echo 0;}</php></span>&nbsp;件商品</a></span>
+                    <span class="mt05 mr10 fr"><a href="__APP__/Cart/cart"><img src="../Public/images/cartbutton.gif" /></a></span>
+                </div>
+            </span>
+
+            <div class="clearfix">
+                <div class="menu fl">
+                    <ul class="menu_list">
+                        <li><a href="__APP__">返回首页</a></li>
+                        <li><a href="__APP__/News/index/id/80">会员折扣</a></li>
+                        <li><a href="__APP__/News/index/id/95">信用卡购物</a></li>
+                        <li><a href="__APP__/News/index/id/94">支付宝折扣</a></li>
+                        <li><a href="__APP__/News/index/id/93">建行折扣</a></li>
+                        <li><a href="__APP__/News/index/id/100">货到付款</a></li>
+                    </ul>
+                </div>
+
+                <div class="login fl">
+                    <span class="fl f_white lh35 pl50">
+                        您好！
+                        <php>
+                            if(Cookie::is_set('user_name'))
+                            {
+                                echo Cookie::get('user_name').'&nbsp;&nbsp;'.
+                                     '<a href="__APP__/Member/index" class="f_white">[会员中心]</a>&nbsp;&nbsp;&nbsp;'.
+                                     '<a href="__APP__/Login/loginout" class="f_white">[退出]</a>';
+                            }
+                            else
+                            {
+                                echo '<a href="__APP__/Login" class="f_white">[请登录]</a>&nbsp;&nbsp;&nbsp;'.
+                                     '<a href="__APP__/Register" class="f_white">[免费注册]</a>';
+                            }
+                        </php>
+                    </span>
+                </div>
+            </div>
+
+            <div class="main top_2 pt10 pb10">
+                <span class="tp2_serch fl">
+                    <form class="serch_bar pl20 ml10" action="__APP__/Search/index" method="GET">
+                        <input type="text" name="keyword" size="10" class="serch_text" />
+                        <input type="submit" class="btn_serch" value="搜索" />
+                    </form>
+                </span>
+                <a class="lh24 ml05 fl f_deep_gray" href="__APP__/Search/adv_search">|&nbsp;&nbsp;高级搜索</a>
+
+                <span class="fr mr10 lh24">
+                品牌专区：<a href="__APP__/Goodslist/index/id/125">佳能</a> | <a href="__APP__/Goodslist/index/id/126">富士</a> | <a href="__APP__/Goodslist/index/id/127">尼康</a> | <a href="__APP__/Goodslist/index/id/129">卡西欧</a> | <a href="__APP__/Goodslist/index/id/103">HTC手机</a> | <a href="__APP__/Goodslist/index/id/100">摩托罗拉</a> | <a href="__APP__/Goodslist/index/id/105">索爱</a> | <a href="__APP__/Goodslist/index/id/102">三星手机</a> | <a href="__APP__/Goodslist/index/id/108">联想电脑</a> | <a href="__APP__/Goodslist/index/id/109">THINKPAD(IBM)</a>
+                </span>
+            </div>
+
+            <div class="mt05"><a href="###"><img src="../Public/images/img/top_banna1.gif" /></a></div>
+            <div class="mt05"><a href="###"><img src="../Public/images/img/top_banna2.jpg" width="950" /></a></div>
+
+        </div>
+
+    </div>
+    </div>

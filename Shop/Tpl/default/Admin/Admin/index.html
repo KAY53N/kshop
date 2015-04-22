@@ -1,0 +1,35 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 管理员列表</span>
+        <span class="fr"><a href="<{:U('Admin-Admin/add_admin')}>" class="btn_sty">添加管理员</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <table width="100%" cellspacing="1" cellpadding="3" id="list-table">
+            <tr>
+                <th>用户名</th>
+                <th>Email地址</th>
+                <th>加入时间</th>
+                <th>最后登录时间</th>
+                <th>操作</th>
+            </tr>
+
+            <volist name="data.list" id="vo">
+            <tr>
+                <td class="first-cell" id="user"><{$vo.username}></td>
+                <td align="left"><{$vo.email}></td>
+                <td align="center"><{$vo.addtime|date="Y-m-d H:i:s",###}></td>
+                <td align="center"><if condition="$vo.logintime eq 0 ">N/A<else/><{$vo.logintime|date="Y-m-d H:i:s",###}></if></td>
+                <td align="center">
+                <a title="编辑" href="<{:U('Admin-Admin/edit_admin/id/').$vo['id']}>"><img height="16" width="16" border="0" src="../Public/images/icon_edit.gif"></a>&nbsp;&nbsp;
+                <a title="移除" href="<{:U('Admin-Admin/del_admin/id/').$vo['id']}>" id="del"><img height="16" width="16" border="0" src="../Public/images/icon_drop.gif"></a></td>
+            </tr>
+            </volist>
+
+        </table>
+
+    </div>
+
+<include file="Public:footFrame" />

@@ -1,0 +1,53 @@
+<include file="Public:header" />
+<script type="text/javascript" src="../Public/js/form-class.js"></script>
+<script type="text/javascript" src="../Public/js/register.js"></script>
+
+<div class="main mt10">
+    <div class="register">
+        <h3 class="pl20">用户注册</h3>
+        <p class="pl20 mt10 f_gray">欢迎来到我们网站，如果您是新用户，请填写下面的表单进行注册</p>
+        <div class="padding_20 margin_20 border1_gray">
+        <form action="__APP__/register/register_sub" method="POST" onSubmit="return Validator.Validate(this,2)">
+            <table border="0" width="100%">
+                <tbody>
+                <tr height="35">
+                    <td width="20%" class="pl40 ta_r"><font color="red">*</font>用户名：</td>
+                    <td width="80%"><input type="text" name="username" class="input_text" datatype="User" msg="用户名必须6-16位英文或数字" maxlength="12" />&nbsp;<span id="us"></span></td>
+                </tr>
+
+                <tr height="35">
+                    <td width="20%" class="pl40 ta_r"><font color="red">*</font>密码：</td>
+                    <td width="80%"><input type="password" name="password" class="input_text" datatype="Pass" msg="密码必须6到18位英文或数字" maxlength="18"/></td>
+                </tr>
+
+                <tr height="35">
+                    <td width="20%" class="pl40 ta_r"><font color="red">*</font>确认密码：</td>
+                    <td width="80%"><input type="password" name="pwd_confirm" class="input_text" datatype="Repeat" to="password" msg="两次输入的密码不一致" maxlength="18"/></td>
+                </tr>
+
+                <tr height="35">
+                    <td width="20%" class="pl40 ta_r"><font color="red">*</font>电子邮箱：</td>
+                    <td width="80%"><input type="text" name="email" class="input_text" datatype="Email" msg="Email格式错误" maxlength="30" /></td>
+                </tr>
+
+                <tr height="35">
+                    <td width="20%" class="pl40 ta_r"><font color="red">*</font>验证码：</td>
+                    <td width="80%"><input type="text" name="code" class="input_text" datatype="Require" msg="验证码未填写" maxlength="5" />&nbsp;<img style="vertical-align:bottom" src="__APP__/common/verify" onclick="this.src='__APP__/common/verify?'+Math.random()" /></td>
+                </tr>
+
+                <tr height="35">
+                    <td colspan="2" style="text-align:left; text-indent:10em;"><input type="checkbox" name="favorite" checked="checked" dataType="Group" value="1" min="1"  msg="请同意会员注册协议" />我已阅读并同意<a href="###" style="text-decoration:underline">会员注册协议</a>和<a href="###" style="text-decoration:underline">隐私保护政策</a>。</td>
+                </tr>
+
+                <tr height="35">
+                    <td>&nbsp;</td>
+                    <td><input type="submit" class="button btn-register" value="注册新用户"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

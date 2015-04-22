@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理中心</title>
+<link type="text/css" rel="stylesheet" href="../Public/css/css.css" />
+<link type="text/css" rel="stylesheet" href="../Public/css/main.css" />
+<link type="text/css" rel="stylesheet" href="../Public/js/date/css/jscal2.css" />
+<link type="text/css" rel="stylesheet" href="../Public/js/date/css/border-radius.css" />
+<script type="text/javascript" src="../Public/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="../Public/js/date/js/jscal2.js"></script>
+<script type="text/javascript" src="../Public/js/date/js/lang/cn.js"></script>
+<script type="text/javascript" src="../Public/js/form-class.js"></script>
+<script type="text/javascript" src="../Public/js/common.js"></script>
+<{/*----------编辑器------------*/}>
+<script charset="utf-8" src="__PUBLIC__/edit/kindeditor-min.js"></script>
+<script charset="utf-8" src="__PUBLIC__/edit/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = KindEditor.create('textarea[name="news_con"],textarea[name="details"]',{
+            langType:"zh_CN",
+            resizeType:1,
+            urlType:"domain"
+        });
+    });
+</script>
+</head>
+
+<body style="padding:10px;background:#DDEEF2;">

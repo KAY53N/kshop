@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="../Public/css/main.css" />
+<script type="text/javascript" src="../Public/js/jquery-1.6.2.min.js"></script>
+<script>
+$(function(){
+    $('#hide').hover(function(){
+	    $(this).parent().attr('bgcolor', '#D1EEEE');
+	},function(){
+	    $(this).parent().attr('bgcolor', '#80BDCB');
+	})
+
+    $('#hide').live('click', function(){
+	    if(parent.Frame_body.cols=='180,10,*')
+        {
+		    parent.Frame_body.cols='0,10,*';
+		    document.getElementById('ImgArrow').src='../Public/images/arrow_right.gif';
+		    document.getElementById('ImgArrow').alt='打开左侧导航栏';
+	    }
+        else
+        {
+		    parent.Frame_body.cols='180,10,*';
+		    document.getElementById('ImgArrow').src='../Public/images/arrow_left.gif';
+		    document.getElementById('ImgArrow').alt='隐藏左侧导航栏';
+	    }
+	});
+});
+ 
+function MyLoad()
+{
+    if(window.parent.location.href.indexOf('MainUrl')>0)
+    {
+        window.top.hideFrame.document.getElementById('ImgArrow').src='images/arrow_left.gif';
+    }
+}
+</script>
+</head>
+
+<body bgcolor="#80BDCB" style="padding-top:200px" onload="MyLoad()">
+
+
+<a class="fl pointer" id="hide"><img src="../Public/images/arrow_left.gif" id="ImgArrow" alt="隐藏左侧导航栏"></a>
+
+</body>
+</html>

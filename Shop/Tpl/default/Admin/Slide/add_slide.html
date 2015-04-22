@@ -1,0 +1,47 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 添加首页幻灯片</span>
+        <span class="fr"><a href="<{:U('Admin-Slide/index')}>" class="btn_sty">首页幻灯片列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Slide/add_slide_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)" enctype="multipart/form-data">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">图片跳转url：</td>
+                    <td><input type="text" name="href_url" class="input_text news_title" dataType="Url" msg="非法的图片跳转url" style="width:400px"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">alt：</td>
+                    <td><input type="text" name="alt" class="input_text news_title"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">打开方式：</td>
+                    <td>
+                        <select name="target" dataType="Require"  msg="未选择打开方式" >
+                            <option>选择打开方式</option>
+                            <option value="_blank">新窗口</option>
+                            <option value="_self">当前窗口</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">图片：</td>
+                    <td><input type="file" name="file" dataType="Require" msg="请上传图片"></td>
+                </tr>
+
+                <tr>
+                    <td align="right"> </td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

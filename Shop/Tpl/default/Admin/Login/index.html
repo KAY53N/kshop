@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kshop 管理中心</title>
+    <link type="text/css" rel="stylesheet" href="../Public/css/main.css" />
+<link type="text/css" rel="stylesheet" href="../Public/css/css.css" />
+<script type="text/javascript" src="../Public/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.effects.core.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.effects.shake.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.effects.bounce.js"></script>
+<script>
+if(top.location.pathname != location.pathname){
+	top.location.href="<{:U('Admin-Login/index')}>";
+}
+</script>
+<script>
+$(function() {
+$("input").keydown(function(e){
+if(e.keyCode==13){
+   $('#submit').click(); //处理事件
+}
+}); 
+	$("#login").show( "bounce",200,function(){
+		$("input[name=user]").focus();
+	});
+	// run the currently selected effect
+	var runSubmit = true;
+    function runEffect() {
+		// run the effect
+        if(runSubmit)
+        {
+            runSubmit = false;
+            $("#login").hide("shake", 60, function(){
+                runSubmit = true;
+            });
+        }
+	};
+
+    $('#submit').click(function() {
+		var usernameVal = $('#username').val();
+		var passwrodVal = $('#password').val();
+		var codeVal = $('#code').val();
+
+        $.getJSON("<{:U('Admin-Login/login_user')}>",{username:usernameVal, password:passwrodVal},function(json)
+        {
+            if(json.status == 1){
+                $.getJSON("<{:U('Admin-Login/login_verify')}>",{code:codeVal},function(json)
+                {
+                    if(json.status == 1)
+                    {
+                         window.location.href="<{:U('Admin-Index/index')}>";
+                    }
+                    else
+                    {
+                        runEffect();
+                        $("#info").append("<span>验证码错误</span>").show("shake",400);
+                        setTimeout(function() {
+                            $("#info span").remove();
+                        },4000)
+                    }
+                });
+
+            }
+            else
+            {
+                runEffect();
+                if($('#info span').text().length == 0)
+                {
+                    $("#info").append("<span>用户名或密码错误</span>").show("shake",400);
+                    setTimeout(function() {
+                        $( "#info span" ).remove();
+                    }, 4000 )
+                }
+            }
+        });
+	});
+});
+</script>
+</head>
+
+<body bgcolor="#278296" style="overflow-x:hidden">
+
+<div id="info_div" class="clearfix"><div id="info" class="h55 lh40 f20 f_white ta_c fl"><span style="display:none;"></span></div></div>
+<div id="login_div" class="clearfix">
+  <table id="login" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td><img height="256" width="178" border="0" alt="ECSHOP" src="../Public/images/admin_login.png"></td>
+    <td style="padding-left: 50px">
+      <table>
+      <tr>
+        <td>管理员姓名：</td>
+        <td><input type="text" class="input_text" name="username" id="username" value="" /></td>
+      </tr>
+      <tr>
+        <td>管理员密码：</td>
+        <td><input type="password" class="input_text" name="password" id="password" /></td>
+      </tr>
+            <tr>
+        <td>验证码：</td>
+        <td><input type="text" class="input_text" name="code" id="code" /></td>
+      </tr>
+      <tr>
+      <td align="right" colspan="2">
+      <img src="__APP__/common/verify" onclick="this.src='__APP__/common/verify?'+Math.random()" alt="看不清楚？换一张" /><{$code}>
+      </td>
+      </tr>
+      <tr><td colspan="2"><input type="checkbox" id="remember" name="remember" value="1"><label for="remember">&nbsp;请保存我这次的登录信息。</label></td></tr>
+      <tr><td>&nbsp;</td><td><input type="button" class="button" id="submit" value="进入管理中心"></td></tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+</div>
+
+</body>
+</html>

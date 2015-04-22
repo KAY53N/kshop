@@ -1,0 +1,56 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 编辑首页幻灯片</span>
+        <span class="fr"><a href="<{:U('Admin-Slide/add_slide')}>" class="btn_sty">添加首页幻灯片</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-slide/edit_slide_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)" enctype="multipart/form-data">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">图片预览：</td>
+                    <td><img src="__PUBLIC__/images/banna/<{$data.slideInfo.img_url}>" width="200" height="80"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">图片跳转url：</td>
+                    <td><input type="text" name="href_url" class="input_text news_title" dataType="Require" msg="图片跳转url必填" style="width:400px" value="<{$data.slideInfo.href_url}>"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">alt：</td>
+                    <td><input type="text" name="alt" class="input_text news_title" dataType="Require" msg="alt必填" value="<{$data.slideInfo.alt}>"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">打开方式：</td>
+                    <td>
+                        <select name="target">
+                        <if condition="$data['slideinfo']['target'] eq '_blank'">
+                            <option value="_blank" selected="true">新窗口</option>
+                            <option value="_self">当前窗口</option>
+                        <else />
+                            <option value="_blank">新窗口</option>
+                            <option value="_self" selected="true">当前窗口</option>
+                        </if>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">图片：</td>
+                    <td><input type="file" name="file"></td>
+                </tr>
+
+                <tr>
+                    <td align="right"><input type="hidden" name="id" value="<{$data.slideInfo.id}>"></td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

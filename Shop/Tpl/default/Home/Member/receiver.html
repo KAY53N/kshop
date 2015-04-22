@@ -1,0 +1,41 @@
+<include file="Public:header" />
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+  
+            <h3>收货地址</h3>
+            <div class="mt10"><a href="__APP__/member/add_receiver"><img src="../Public/images/btn-addaddress.gif" /></a></div>
+
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="memberlist mt10">
+            <tr>
+                <th class="pl10">收货人</th>
+                <th class="pl10">地址</th>
+                <th class="pl10">电话</th>
+                <th class="pl10">手机</th>
+                <th class="pl10">邮编</th>
+                <th class="pl10">操作</th>
+            </tr>
+
+            <volist name="data.list" id="vo">
+                <tr>
+                    <td class="padding_5"><{$vo.name}></td>
+                    <td class="padding_5"><{$vo.sel0}>-<{$vo.sel1}>-<{$vo.sel2}>&nbsp;&nbsp;<{$vo.dizhi}></td>
+                    <td class="padding_5"><{$vo.phone}></td>
+                    <td class="padding_5"><{$vo.mobile}></td>
+                    <td class="padding_5"><{$vo.zip_code}></td>
+                    <td class="padding_5"><a href="__APP__/member/del_receiver/id/<{$vo.id}>">删除</a>&nbsp;&nbsp;</td>
+                </tr>
+            </volist>
+
+            </table>
+        
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

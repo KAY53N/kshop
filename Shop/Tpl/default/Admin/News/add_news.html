@@ -1,0 +1,51 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 添加公告</span>
+        <span class="fr"><a href="<{:U('Admin-News/index')}>" class="btn_sty">公告列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-News/add_news_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">新闻标题：</td>
+                    <td><input type="text" name="news_title" class="input_text news_title" dataType="Require" msg="新闻标题必填" maxlength="30" style="width:400px"><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">发布日期：</td>
+                    <td>
+                        <input type="text" class="input_text" name="news_date" id="f_rangeStart" dataType="Date" msg="生日日期不存在" value="<{$list.chusheng_date}>" maxlength="10" />
+                        <script type="text/javascript">
+                        new Calendar({
+                        inputField: "f_rangeStart",
+                        dateFormat: "%Y-%m-%d",
+                        trigger: "f_rangeStart",
+                        bottomBar: false,
+                        onSelect: function() { this.hide()}
+                        });
+                        </script>
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">新闻内容：</td>
+                    <td><textarea id="news_con" name="news_con" style="width:95%;height:400px"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input name="Submit" type="submit" class="button" value="确定提交">&nbsp;&nbsp;&nbsp;
+                        <input type="reset" class="button" value=" 重置 ">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

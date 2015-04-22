@@ -1,0 +1,29 @@
+<include file="Public:header" />
+
+    <div class="main mt10">
+        <div class="register">
+            <h3 class="pl20">已注册用户，请登录</h3>
+            <p class="pl20 mt10 f_gray">如果您已是本站会员，请登录</p>
+            <div class="padding_20 margin_20 border1_gray">
+                <form action="__APP__/login/login_sub" method="POST">
+                    <table border="0" class="zhuce_table">
+                        <tr height="35">
+                            <td width="20%" class="zhuce_left"><font color="red">*</font>用户名：</td>
+                            <td width="80%"><input type="text" name="username" class="input_text" />&nbsp;&nbsp;<a href="__APP__/register">立即注册</a></td>
+                        </tr>
+                        <tr height="35">
+                            <td width="20%" class="zhuce_left"><font color="red">*</font>密码：</td>
+                            <td width="80%"><input type="password" name="password" class="input_text" />&nbsp;&nbsp;<a href="__APP__/login/forget_pass">忘记密码?</a></td>
+                        </tr>
+                        <tr height="35">
+                            <td>&nbsp;</td>
+                            <td><input type="submit" value="登陆" class="btn-login"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

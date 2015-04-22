@@ -1,0 +1,64 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 会员列表</span>
+        <span class="fr"><a href="<{:U('Admin-User/add_user')}>" class="btn_sty">添加会员</a></span>
+    </div>
+
+    <div class="admin_hd clearfix mt10">
+        <form action="<{:U('Admin-User/search_user')}>" method="POST">
+            <span class="mr10"><img width="26" height="22" style="vertical-align:middle" border="0" alt="SEARCH" src="../Public/images/icon_search.gif"></span>
+            <span class="mr10">会员等级 <select name="user_rank"><option value="0">所有等级</option><option value="1">注册用户</option><option value="3">代销用户</option><option value="2">vip</option></select></span>
+            <span class="mr10">会员积分大于&nbsp;<input type="text" size="8" name="pay_points_gt" class="text_input num"></span>
+            <span class="mr10">会员积分小于&nbsp;<input type="text" size="10" name="pay_points_lt" class="text_input num"></span>
+            <span class="mr10">会员名称 &nbsp;<input type="text" name="keyword" class="text_input"></span>
+            <span><input type="submit" value=" 搜索 "></span>
+        </form>
+    </div>
+
+
+    <div class="list_div mt10">
+
+        <form action="<{:U('Admin-User/del_user')}>" method="GET">
+            <table width="100%" cellspacing="1" cellpadding="3" id="table">
+                <tr>
+                    <th><input type="checkbox" id="more_checkbox"><a href="###" title="点击对列表排序">编号<img src="../Public/images/sort_desc.gif"></a></th>
+                    <th>会员名称</th>
+                    <th>邮件地址</th>
+                    <th>可用资金</th>
+                    <th>冻结资金</th>
+                    <th>等级积分</th>
+                    <th>消费积分</th>
+                    <th>总积分</th>
+                    <th>注册日期</th>
+                    <th>操作</th>
+                </tr>
+
+                <volist name="data.list" id="vo" key="k">
+                <tr>
+                    <td><input type="checkbox" class="check" name="<{$k}>" value="<{$vo.id}>" /><{$vo.id}></td>
+                    <td id="user"><{$vo.username}> </td>
+                    <td><span><{$vo.email}></span></td>
+                    <td><{$vo.available_funds}></td>
+                    <td><{$vo.blocked_funds}></td>
+                    <td><{$vo.grade_points}></td>
+                    <td><{$vo.consumption_points}></td>
+                    <td><{$vo.sum_points}></td>
+                    <td align="center"><{$vo.add_time|date="Y-m-d",###}></td>
+                    <td align="center">
+                        <a title="编辑" href="<{:U('Admin-User/edit_user/id/').$vo['id']}>"><img width="16" height="16" border="0" src="../Public/images/icon_edit.gif"></a>&nbsp;&nbsp;
+                        <a title="移除" href="<{:U('Admin-User/del_user/id/').$vo['id']}>" id="del"><img width="16" height="16" border="0" src="../Public/images/icon_drop.gif"></a>
+                    </td>
+                </tr>
+                </volist>
+
+                <tr>
+                    <td><input type="submit" class="button" id="more_del" value="删除会员" /></td>
+                    <td colspan="9" align="right"><{$data.show}></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

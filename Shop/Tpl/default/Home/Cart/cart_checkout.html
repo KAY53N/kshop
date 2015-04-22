@@ -1,0 +1,265 @@
+<include file="Public:header" />
+<script type="text/javascript" src="../Public/js/cart.js"></script>
+<script type="text/javascript" src="../Public/js/form-class.js"></script>
+
+<div class="main">
+<form action="__APP__/cart/add_orders" method="POST" onSubmit="return Validator.Validate(this,2)">
+    <div class="register">
+    
+        <div class="cart_top">
+            <div class="cart_top_left"><img src="../Public/images/cartnav-step3.gif" /></div>
+            <div class="cart_top_right pr10"><img src="../Public/images/cartnav-cart.gif" /></div>
+        </div>
+
+
+        <div class="margin_10 padding_10 border1_gray">
+
+            <table border="0" width="100%">
+
+                <tr>
+                    <td width="100">收货信息确认</td>
+                    <td>
+                        <div class="border1_gray padding_10">
+                            <table border="0" width="100%">
+
+                                <tr height="30">
+                                    <td class="checkout_take_l"><span class="f_red">*</span>收货地址：</td>
+                                    <td>
+                                        <input type="text" value="<{$data.info.sel0}><{$data.info.sel1}><{$data.info.sel2}><{$data.info.site}>" msg="收货地址必填" datatype="Limit" min="12" max="50" style="width:300px;" />
+                                        <span class="ml10">邮编：<input type="text" value="<{$data.info.zip_code}>"  /></span>
+                                    </td>
+                                </tr>
+
+                                <tr height="30">
+                                    <td class="checkout_take_l"><span class="f_red">*</span>收货人姓名：</td>
+                                    <td><input type="text" value="<{$data.info.name}>" datatype="Limit" msg="收货人姓名不正确" min="2" /></td>
+                                </tr>
+
+                                <tr height="30">
+                                    <td class="checkout_take_l"><span class="f_red">*</span>手机：</td>
+                                    <td><input type="text" value="<{$data.info.mobile}>" datatype="Mobile" msg="手机号不正确" /></td>
+                                </tr>
+
+                                <tr height="30">
+                                    <td class="checkout_take_l">固定电话：</td>
+                                    <td><input type="text" value="<{$data.info.phone}>" /></td>
+                                </tr>
+
+                                <tr height="30">
+                                    <td class="checkout_take_l">订单附言：</td>
+                                    <td><input type="text" name="remark" value="<{$data.info.remark}>" /></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+            <table border="0" width="100%">
+
+                <tr>
+                    <td width="100">配送方式确认<span class="red">*</span></td>
+                    <td>
+                        <div class="padding_5 border1_gray bg_white">
+                            <table border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor="#d3d3d3">
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;货到付款(快速送达,推荐使用)</td>
+                                    <td bgcolor="#ffffff" class="padding_5">
+                                        <div>+￥0</div>
+                                        <div><span class="ps_h1">全场免邮费，免手续费，快速送达，</span>推荐使用！ 限100-6000元商品</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;顺丰快递</td>
+                                    <td bgcolor="#ffffff" class="padding_5">
+                                        <div>+￥0</div>
+                                        <div>(高端物流)全国今天发货次日送达</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" checked="checked" />&nbsp;&nbsp;邮政EMS</td>
+                                    <td bgcolor="#EEF4FB" class="padding_5">
+                                        <div>+￥0</div>
+                                        <div>全国2-3天送到；乡村4-5天送到</div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+            <table border="0" width="100%" class="mt10">
+
+                <tr>
+                    <td width="100">支付方式确认<span class="f_red">*</span></td>
+                    <td>
+                        <div class="border1_gray padding_5">
+                            <div class="padding_5">
+                            货币类型<select><option>人民币</option></select>
+                            </div>
+                            <table border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor="#d3d3d3">
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" checked="checked" />&nbsp;&nbsp;支付宝[及时付款]</td>
+                                    <td bgcolor="#eef4fb" class="padding_15">
+                                        <div class="zhifu_r"><img src="../Public/images/aliplay.jpg" />您正在使用担保交易： 1、确认订单 → 2、付款到支付宝 → 4、 买家等待收货-->交易完成</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;Kshop账户</td>
+                                    <td bgcolor="#ffffff" class="padding_15">
+                                        <div class="zhifu_r"><span class="red">支付步骤：</span>登录会员中心-->先充值-->完成支付</div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;建行网上支付</td>
+                                    <td bgcolor="#ffffff" class="padding_15">
+                                        <div class="zhifu_r"><img src="../Public/images/jiansheyinhang_ico.jpg" /><b>信用卡</b>单笔最高30000元，立减2%，最高优惠40元，有关建行活动，请看>></div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;农行网上支付</td>
+                                    <td bgcolor="#ffffff" class="padding_15">
+                                        <div class="zhifu_r"><img src="../Public/images/nonyeyinhang_ico.jpg" />全线98折最高40元，支付界面体现优惠，暂不支持信用卡</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;工行网上支付</td>
+                                    <td bgcolor="#ffffff" class="padding_15">
+                                        <div class="zhifu_r"><img src="../Public/images/gongshangyinhang_ico.jpg" />可12个月分期付款，月手续费仅0.3% </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;招行网上支付</td>
+                                    <td bgcolor="#ffffff" class="padding_15">
+                                        <div class="zhifu_r"><img src="../Public/images/zhaoshangyinhang_ico.jpg" />信用卡可大额支付，如您设置自己的最大网上支付额度为3万，即可支付3万</div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;银联信用卡(无需网银,限额5000)</td>
+                                    <td bgcolor="#ffffff" class="padding_15">
+                                        <div class="zhifu_r"><img src="../Public/images/yinlian_ico.gif" /></div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td bgcolor="#eeeeee" class="padding_15"><input type="radio" disabled=true />&nbsp;&nbsp;银行转账或上门付现</td>
+                                    <td bgcolor="#ffffff" class="padding_15"></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="bg_gray border1_gray padding_10">
+            <span class="form_title font_14"><b>购买的商品:</b></span>
+
+            <div class="bg_white border1_gray padding_5 mt10">
+
+                <table width="100%" border="0" cellpadding="0" cellspacing="1" class="bg_gray form_cart">
+                    <tr height="30">
+                        <th width="5%">图片</th>
+                        <th width="45%">商品名称</th>
+                        <th width="10%">商品积分</th>
+                        <th width="10%">市场价格</th>
+                        <th width="10%">销售价格</th>
+                        <th width="10%">数量</th>
+                        <th width="10%">小计</th>
+                    </tr>
+
+                    <empty name="data.cartList">
+                        <tr bgcolor="#ffffff" class="ta_c"><td colspan="8" class="padding_5">购物车内商品为空</td></tr>
+                        <else />
+                        <volist name="data.cartList" id="vo" key="k">
+                            <tr bgcolor="#ffffff" class="ta_c">
+                                <input type="hidden" id="conditionId" name="where_id<{$k}>" value="<{$vo.id}>" />
+                                <td class="cart_pic padding_5"><a href="__APP__/goods/index/id/<{$vo.goods_id}>" target="_blank"><img width="50" height="50" src="__ROOT__/<{$vo.path}>x_<{$vo.pic}>" /></a></td>
+                                <td class="goods_nama padding_5 ta_l"><a href="__APP__/goods/index/id/<{$vo.goods_id}>" target="_blank"><{$vo.goods_name}></a></td>
+                                <td class="padding_5"><{$vo.points}></td>
+                                <td class="sell_price padding_5">￥<{$vo.market_price}></td>
+                                <td class="padding_5">￥<span id="sell_price"><{$vo.sell_price}></span></td>
+                                <td class="padding_5"><{$vo.buy_num}></td>
+                                <td bgcolor="#fffacd" class="padding_5">￥<span id="minStatistics"><{$vo.total_price}></span></td>
+                            </tr>
+                        </volist>
+                    </empty>
+                </table>
+
+            </div>
+
+
+            <div class="mt30">
+
+                <table border="0" cellpadding="0" cellspacing="1" width="100%" bgcolor="#b3b3b3">
+
+                    <tr valign="top">
+                        <td bgcolor="#eeeeee" class="padding_15 ta_r">订单总金额：</td>
+                        <td width="25%" bgcolor="#fbf7ee" class="padding_15">
+                            <div class="f_red f16 fb">￥<{$data.all_price}></div>
+                            <div class="mt10">是否包含发票(税金0%)<input type="checkbox" /></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td bgcolor="#eeeeee" class="padding_15 ta_r">此订单数获得积分：</td>
+                        <td width="25%" bgcolor="#fbf7ee" class="padding_15"><{$data.all_points}></td>
+                    </tr>
+
+                    <tr>
+                        <td bgcolor="#eeeeee" class="padding_15 ta_r">您的积分总计：</td>
+                        <td width="25%" bgcolor="#fbf7ee" class="padding_15"><{$data.userAllPoints}></td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    
+    <div class="ta_c clearfix padding_20 mb40">
+        <input type="hidden" name="title" value="<{$title}>订单号：<{$data.order_No}>" />
+        <input type="hidden" name="details" value="" />
+        <input type="hidden" name="price" value="<{$data.all_price}>" />
+        <input type="hidden" name="order_No" value="<{$data.order_No}>" />
+        <input type="hidden" name="path" value="<{$vo.path}>" />
+
+        <input type="hidden" name="title_info" value='<volist name="data.cartList" id="vo"><{$vo.goods_name}>-~-</volist>' />
+        <input type="hidden" name="more_price" value='<volist name="data.cartList" id="vo"><{$vo.total_price}>-~-</volist>' />
+        <input type="hidden" name="buy_num" value='<volist name="data.cartList" id="vo"><{$vo.buy_num}>-~-</volist>' />
+        <input type="hidden" name="points" value='<volist name="data.cartList" id="vo"><{$vo.points}>-~-</volist>' />
+        <input type="hidden" name="order_pic" value='<volist name="data.cartList" id="vo"><{$vo.pic}>-~-</volist>' />
+        <input type="hidden" name="goods_id" value='<volist name="data.cartList" id="vo"><{$vo.goods_id}>-~-</volist>' />
+
+        <input type="button" onclick="javascript:history.go(-1)" value="返回购物车" />
+        <input type="submit" class="ml20" value="确认无误，下订单" />
+    </div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<include file="Public:header" />
+
+    <include file="Public:memberbar" />
+
+        <{$data.leftMenu}>
+
+        <div class="member_right">
+  
+            <h3>修改密码</h3>
+        
+            <form action="__APP__/member/security_sub" method="POST"  onSubmit="return Validator.Validate(this,2)">
+            <table width="100%">
+
+                <tr height="30">
+                    <td width="100" align="right">旧密码：</td>
+                    <td><input type="password" name="auldPassword" class="text_input text_style" dataType="Require" msg="旧密码不能为空" /></td>
+                </tr>
+
+                <tr heihgt="30">
+                    <td width="100" align="right">新密码：</td>
+                    <td><input type="password" name="password" class="text_input text_style" dataType="Pass" msg="新密码最少6位" /></td>
+                </tr>
+
+                <tr height="30">
+                    <td width="100" align="right">确认新密码：</td>
+                    <td><input type="password" name="Repeat" class="text_input text_style" dataType="Repeat" to="password" msg="两次输入的密码不一致"/></td>
+                </tr>
+
+                <tr height="30">
+                    <input type="hidden" name="id" value="<php>echo Cookie::get('user_id');</php>" />
+                    <input type="hidden" name="username" value="<php>echo Cookie::get('user_name');</php>" />
+                    <td colspan="2" class="pl50"><input type="submit" value="修改密码" class="btn_setting_save ml40" /></td>
+                </tr>
+
+            </table>
+            </form>
+
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<include file="Public:footer" />

@@ -1,0 +1,198 @@
+<include file="Public:header" />
+
+    <div class="main">
+
+        <include file="Public:goods_sort" />
+
+        <div class="shop_center">
+
+            <div id="Kslider" class="slider">
+                <ul>
+                    <volist name="data.slideList" id="vo">
+                        <li><a href="<{$vo.href_url}>" target="<{$vo.target}>"><img width="500" height="200" src="__PUBLIC__/images/banna/<{$vo.img_url}>" alt="<{$vo.alt}>" /></a></li>
+                    </volist>
+                </ul>
+                <div id="btnList"></div>
+            </div>
+
+            <div class="hot_goods">
+                <div class="goods_hd">
+                    <span class="hot"><a href="###">HOT热卖商品</a></span>
+                    <span class="more"><a href="###">更多>></a></span>
+                </div>
+
+                <ul>
+                    <volist name="data.shopList" id="vo">
+                        <li class="goods_item">
+                            <p class="goods_pic"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img src="__ROOT__/<{$vo.path}>z_<{$vo.pic_one}>" /></a></p>
+                            <p class="ta_c mt05"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,8}></a></p>
+                            <p class="mt05 ta_c">市场价:<del class="f_gray">￥<{$vo.market_price}></del></p>
+                            <p class="mt05 ta_c">Kshop价:<span class="f_red">￥<{$vo.sell_price}></span></p>
+                            <p class="mt05 lh20 ta_l"><{$vo.title_info|msubstr=0,20}></p>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="shop_right">
+            <div class="shop_news">
+                <div class="spnews_hd"><span class="lh35 f14 fb ml05 pl30">最新精彩活动</span></div>
+                <ul>
+                    <volist name="data.newsList" id="vo" offset="0" length='6' key="k">
+                        <li><{$k}>.&nbsp;&nbsp;<a href="__APP__/news/index/id/<{$vo.id}>"><{$vo.news_title}></a></li>
+                    </volist>
+                </ul>
+                <div class="spnews_foot"></div>
+            </div>
+
+            <div class="mt10"><a href="__APP__/goodslist/index/id/125"><img src="../Public/images/img/right_pic1.gif" /></a></div>
+            <div class="mt10"><a href="__APP__/goodslist/index/id/111"><img src="../Public/images/img/right_pic2.gif" /></a></div>
+            <div class="mt10"><a href="__APP__/goodslist/index/id/109"><img src="../Public/images/img/right_pic3.gif" /></a></div>
+            <div class="mt10"><a href="__APP__/goodslist/index/id/125"><img src="../Public/images/img/right_pic4.gif" /></a></div>
+        </div>
+
+    </div>
+
+
+    <div class="main hidden">
+
+        <div class="brand_recommend clearfix">
+            <div class="brand_recommend_l"></div>
+            <div class="brand_recommend_c">
+                <table width="492" height="5" cellspacing="2" cellpadding="0" border="0.5">
+                    <tr>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/125"><img width="69" height="35" border="0" src="../Public/images/jianeng.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/128"><img width="69" height="35" border="0" src="../Public/images/keda.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/126"><img width="69" height="35" border="0" src="../Public/images/fushi.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/129"><img width="69" height="35" border="0" src="../Public/images/kaxiou.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/131"><img width="69" height="35" border="0" src="../Public/images/songxia.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/127"><img width="69" height="35" border="0" src="../Public/images/nikang.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/103"><img width="69" height="35" border="0" src="../Public/images/htc.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/102"><img width="69" height="35" border="0" src="../Public/images/sanxing.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/108"><img width="69" height="35" border="0" src="../Public/images/lianxiang.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="__APP__/goodslist/index/id/109"><img width="69" height="35" border="0" src="../Public/images/thinkpad.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"><a target="_blank" href="goodslist/index/id/100"><img width="69" height="35" border="0" src="../Public/images/motuoluola.gif"></a></td>
+                        <td align="center" width="492" bgcolor="#FFFFFF"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="brand_recommend_r"></div>
+        </div>
+
+        <div class="clearfix ta_c">
+            <span class="fl mr08"><a href="__APP__/goods/index/id/99" target="_blank"> <img src="../Public/images/img/index_banner/0be51f784e02e7d9.jpg"> </a></span>
+            <span class="fl"><a href="__APP__/goods/index/id/100" target="_blank"> <img src="../Public/images/img/index_banner/d17812baf37d2e5c.jpg"> </a></span>
+            <span class="fr"><a target="_blank" href="__APP__/goodslist/index/id/100"> <img src="../Public/images/img/index_banner/375cca6ee094c7bc.jpg"> </a></span>
+        </div>
+
+        <div class="goods_recommend mt10">
+            <div class="goods_t pl30 lh30">摩托罗拉手机专区</div>
+            <div class="goods_c">
+                <ul>
+
+                    <volist name="data.motorola" id="vo" offset="0" length='6'>
+                        <li class="goods_item padding_15 mb15 ta_c">
+                            <p class="goods_pic"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img src="__ROOT__/<{$vo.path}>x_<{$vo.pic_one}>"></a></p>
+                            <p class="mt05"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,12}></a></p>
+                            <p>销售价:<span class="f_red">￥<{$vo.sell_price}></span></p>
+                            <p class="ta_l"><{$vo.title_info|msubstr=0,40}></p>
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="goods_d"></div>
+        </div>
+
+        <div class="goods_recommend mt10">
+            <div class="goods_t pl30 lh30">HTC手机专区</div>
+            <div class="goods_c">
+                <ul>
+
+                    <volist name="data.htc" id="vo" offset="0" length='6'>
+                        <li class="goods_item padding_15 mb15 ta_c">
+                            <p class="goods_pic"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img src="__ROOT__/<{$vo.path}>x_<{$vo.pic_one}>"></a></p>
+                            <p class="mt05"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,11}></a></p>
+                            <p>销售价:<span class="f_red">￥<{$vo.sell_price}></span></p>
+                            <p class="ta_l"><{$vo.title_info|msubstr=0,40}></p>
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="goods_d"></div>
+        </div>
+
+        <div class="clearfix ta_c mt10">
+            <span class="fl mr08"><a target="_blank" href="__APP__/goodslist/index/id/108"> <img src="../Public/images/img/index_banner/50359a499da0f10f.jpg"> </a></span>
+            <span class="fl"><a target="_blank" href="__APP__/goods/index/id/78"> <img src="../Public/images/img/index_banner/f3f24177b6c1ae0c.jpg"> </a></span>
+            <span class="fr"><a target="_blank" href="__APP__/goodslist/index/id/143"> <img src="../Public/images/img/index_banner/111c7dcfbdd31feb.jpg"> </a></span>
+        </div>
+
+        <div class="goods_recommend mt10">
+            <div class="goods_t pl30 lh30">Thinkpad笔记本专区</div>
+            <div class="goods_c">
+                <ul>
+
+                    <volist name="data.thinkpad" id="vo" offset="0" length='6'>
+                        <li class="goods_item padding_15 mb15 ta_c">
+                            <p class="goods_pic"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img src="__ROOT__/<{$vo.path}>x_<{$vo.pic_one}>"></a></p>
+                            <p class="mt05"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,11}></a></p>
+                            <p>销售价:<span class="f_red">￥<{$vo.sell_price}></span></p>
+                            <p class="ta_l"><{$vo.title_info|msubstr=0,40}></p>
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="goods_d"></div>
+        </div>
+
+        <div class="goods_recommend mt10">
+            <div class="goods_t pl30 lh30">联想笔记本专区</div>
+            <div class="goods_c">
+                <ul>
+                    <volist name="data.lenovo" id="vo" offset="0" length='6'>
+                        <li class="goods_item padding_15 mb15 ta_c">
+                            <p class="goods_pic"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img src="__ROOT__/<{$vo.path}>x_<{$vo.pic_one}>"></a></p>
+                            <p class="mt05"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,11}></a></p>
+                            <p>销售价:<span class="f_red">￥<{$vo.sell_price}></span></p>
+                            <p class="ta_l"><{$vo.title_info|msubstr=0,40}></p>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="goods_d"></div>
+        </div>
+
+        <div class="clearfix ta_c mt10">
+            <span class="fl mr08"><a target="_blank" href="__APP__/goodslist/index/id/125"><img src="../Public/images/img/index_banner/c564f058539ee982.jpg"></a></span>
+            <span class="fl"><a target="_blank" href="__APP__/goodslist/index/id/126"><img src="../Public/images/img/index_banner/87743b8e69b0d9c3.jpg"></a></span>
+            <span class="fr"><a target="_blank" href="__APP__/goodslist/index/id/125"><img src="../Public/images/img/index_banner/62a4ff2d9b2826c7.jpg"></a></span>
+        </div>
+
+        <div class="goods_recommend mt10">
+            <div class="goods_t pl30 lh30">佳能数码相机</div>
+            <div class="goods_c">
+                <ul>
+
+                    <volist name="data.camera" id="vo" offset="0" length='12'>
+                        <li class="goods_item padding_15 mb15 ta_c">
+                            <p class="goods_pic"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img src="__ROOT__/<{$vo.path}>x_<{$vo.pic_one}>"></a></p>
+                            <p class="mt05"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,11}></a></p>
+                            <p>销售价:<span class="f_red">￥<{$vo.sell_price}></span></p>
+                            <p class="ta_l"><{$vo.title_info|msubstr=0,40}></p>
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="goods_d"></div>
+        </div>
+
+    </div>
+
+<include file="Public:footer" />

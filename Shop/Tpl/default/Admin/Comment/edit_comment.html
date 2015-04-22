@@ -1,0 +1,71 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 编辑评论</span>
+        <span class="fr"><a href="<{:U('Admin-Comment/index')}>" class="btn_sty">评论列表</a></span>
+    </div>
+
+    <div class="list_div mt10">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Comment/edit_comment_sub')}>" method="post">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">咨询商品：</td>
+                    <td><{$data.goodsTitle}></td>
+                </tr>
+
+                <tr>
+                    <td align="right">咨询内容：</td>
+                    <td><textarea name="content" style="width:50%;border:1px solid #99CCFF" rows="4" dataType="LimitB" min="8" max="200"  msg="咨询内容必须在[4,100]个字之内"><{$data.commentInfo.content}></textarea></td>
+                </tr>
+
+                <tr>
+                    <td align="right">联系方式：</td>
+                    <td><input type="text" name="contact" class="input_text news_title" value="<{$data.commentInfo.contact}>" ></td>
+                </tr>
+
+                <tr>
+                    <td align="right">用户名：</td>
+                    <td><input type="text" name="author" class="input_text news_title" dataType="Require" msg="用户名必填" value="<{$data.commentInfo.author}>"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">评论时间：</td>
+                    <td><input type="text" name="add_date" class="input_text news_title" dataType="Require" msg="评论时间必填" value="<{$data.commentInfo.add_date|date='Y-m-d H:i:s',###}>" >&nbsp;&nbsp;<font color="Gray">例：2011-12-04 03:43:25</font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">回复内容：</td>
+                    <td><textarea name="reply" style="width:50%;border:1px solid #99CCFF" rows="4" dataType="LimitB" min="8" max="200"  msg="回复内容必须在[4,100]个字之内"><{$data.commentInfo.reply}></textarea></td>
+                </tr>
+
+                <tr>
+                    <td align="right">回复时间：</td>
+                    <td><input type="text" name="reply_date" class="input_text news_title" dataType="Require" msg="回复时间必填" value="<{$data.commentInfo.reply_date|date='Y-m-d H:i:s',###}>" >&nbsp;&nbsp;<font color="Gray">例：2011-12-04 03:43:25</font></td>
+                </tr>
+
+                <tr>
+                    <td align="right">评论商品的id：</td>
+                    <td><input type="text" name="goods_id" class="input_text news_title" dataType="Require" msg="评论商品的id必填" value="<{$data.commentInfo.goods_id}>" ></td>
+                </tr>
+
+                <tr>
+                    <td align="right">是否显示：</td>
+                    <td>
+                        <select name="show">
+                            <option value="1" <if condition="$data['commentInfo']['show'] eq 1"> selected=true<else /></if> >显示</option>
+                            <option value="0" <if condition="$data['commentInfo']['show'] eq 0"> selected=true<else /></if> >不显示</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="hidden" name="where_id" value="<{$data.commentInfo.id}>"></td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />
