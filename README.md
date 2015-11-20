@@ -1,6 +1,8 @@
 #Kshop
+早期托管地址：
+(http://git.oschina.net/71927735/Kshop)[http://git.oschina.net/71927735/Kshop]
 
-演示地址：http://www.xujiantao.com/works/lvsenshop
+演示地址：(http://git.oschina.net/71927735/Kshop)[http://www.xujiantao.com/works/lvsenshop]
 
 源码没有安装包，需要自行配置和导入数据库数据
 
@@ -53,9 +55,4 @@ Kshop-Revision-v1.2
 
 -----------------------------------------------------------
 
-网址：www.xujiantao.com
-
-Email:jiantao_xu@hotmail.com
-
-QQ群：113976996
-
+Email: kaysen820@gmail.com
