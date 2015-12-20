@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class AdminAction extends QxAction {
     protected $adminModel;
     public function _initialize()

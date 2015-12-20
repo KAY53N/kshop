@@ -94,6 +94,7 @@ class PayAction extends CommonAction
                 $points = explode('-~-', $orderInfo['points']);
                 $buy_num = explode('-~-', $orderInfo['buy_num']);
                 $goods_id = explode('-~-', $orderInfo['goods_id']);
+                
                 for($i=0; $i<count($goods_id); $i++)
                 {
                     if(empty($goods_id[$i]))

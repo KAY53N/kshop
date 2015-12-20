@@ -1,11 +1,12 @@
 <?php
 class GoodsAction extends QxAction
 {
-    protected $goodsModel;
+    protected $goodsModel, $categoryModel;
     public function _initialize()
     {
         $this->feifa();
         $this->goodsModel = D('Admin.Goods');
+        $this->categoryModel = D('Admin.Category');
     }
 
 	function index()
@@ -18,7 +19,7 @@ class GoodsAction extends QxAction
 
 	function add_goods()
     {
-        $data = $this->goodsModel->getAllSortListData();
+        $data = $this->categoryModel->getCategoryListData();
 		$this->assign('data', $data);
 		$this->display('add_goods');
 	}
@@ -77,23 +78,29 @@ class GoodsAction extends QxAction
 
 	function up()
     {
-		import('@.Org.UploadFile');
-		$upload=new UploadFile();
-		$upload->maxSize='3000000';  //是指上传文件的大小，默认为-1,不限制上传文件大小bytes
-		$upload->savePath='./Public/Uploads/image/img/goods_pic/';       //上传保存到什么地方？路径建议大家已主文件平级目录或者平级目录的子目录来保存
-		$upload->saveRule=uniqid;    //上传文件的文件名保存规则  time uniqid  com_create_guid  uniqid
-		$upload->uploadReplace=true;     //如果存在同名文件是否进行覆盖
-		$upload->allowExts=array('jpg','jpeg','png','gif');     //准许上传的文件后缀
-		$upload->allowTypes=array('image/png','image/jpg','image/pjpeg','image/gif','image/jpeg');  //检测mime类型
-		$upload->thumb=true;   //是否开启图片文件缩略
-		$upload->thumbMaxWidth='120,310,900';  //以字串格式来传，如果你希望有多个，那就在此处，用,分格，写上多个最大宽
-		$upload->thumbMaxHeight='120,310,900';	//最大高度
-		$upload->thumbPrefix='x_,z_,d_';//缩略图文件前缀
-		$upload->thumbRemoveOrigin=1;  //如果生成缩略图，是否删除原图		
+        import('@.Org.UploadFile');
+        
+        foreach($_FILES as $k=>$v)
+        {
+            $this->getSafeName($_FILES['file']['name'][0]);
+        }
+        
+		$upload = new UploadFile();
+		$upload->maxSize = '3000000';  //是指上传文件的大小，默认为-1,不限制上传文件大小bytes
+		$upload->savePath = './Public/Uploads/image/img/goods_pic/';       //上传保存到什么地方？路径建议大家已主文件平级目录或者平级目录的子目录来保存
+		$upload->saveRule = uniqid;    //上传文件的文件名保存规则  time uniqid  com_create_guid  uniqid
+		$upload->uploadReplace = true;     //如果存在同名文件是否进行覆盖
+		$upload->allowExts = array('jpg','jpeg','png','gif');     //准许上传的文件后缀
+		$upload->allowTypes = array('image/png','image/jpg','image/pjpeg','image/gif','image/jpeg');  //检测mime类型
+		$upload->thumb = true;   //是否开启图片文件缩略
+		$upload->thumbMaxWidth = '120,310,900';  //以字串格式来传，如果你希望有多个，那就在此处，用,分格，写上多个最大宽
+		$upload->thumbMaxHeight = '120,310,900';	//最大高度
+		$upload->thumbPrefix = 'x_,z_,d_';//缩略图文件前缀
+		$upload->thumbRemoveOrigin = 1;  //如果生成缩略图，是否删除原图		
 
         if($upload->upload())
         {
-			$info=$upload->getUploadFileInfo();
+			$info = $upload->getUploadFileInfo();
 			return $info;
 		}
         else
@@ -101,13 +108,14 @@ class GoodsAction extends QxAction
 			$this->error($upload->getErrorMsg());
 		}
 	}
-
+	
 	//编辑商品
 	function edit_goods()
     {
         $goodsCondition['id'] = array('eq', intval($_GET['id']));
-        $data['sortInfo'] = $this->goodsModel->getAllSortListData();
+        $data['categoryInfo'] = $this->categoryModel->getCategoryListData();
         $data['goodsInfo'] = $this->goodsModel->getFindGoodsData($goodsCondition);
+        dump($data);
 		$this->assign('data', $data);
 		$this->display("edit_goods");
 	}

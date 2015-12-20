@@ -7,10 +7,10 @@
  */
 class SearchModel extends BaseModel
 {
-    protected $thisGoodsSort;
+    protected $thisGoodsCategory;
     public function _initialize()
     {
-        $this->thisGoodsSort = $this->goodsSort();
+        $this->thisGoodsCategory = $this->goodsCategory();
     }
 
     public function getSearchData($condition)
@@ -20,13 +20,13 @@ class SearchModel extends BaseModel
         $result['goods_list'] = $this->tableGoods()->where($condition)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
         $result['goods_num'] = $count;
         $result['show'] = $page->show();
-        $data = array_merge($this->thisGoodsSort, $result);
+        $data = array_merge($this->thisGoodsCategory, $result);
         return $data;
     }
 
-    public function getGoodsSortData()
+    public function getGoodsCategoryData()
     {
-        return $this->thisGoodsSort;
+        return $this->thisGoodsCategory;
     }
 }
 ?>

@@ -7,10 +7,10 @@
  */
 class GoodslistModel extends BaseModel
 {
-    protected $thisGoodsSort;
+    protected $thisGoodsCategory;
     public function _initialize()
     {
-        $this->thisGoodsSort = $this->goodsSort();
+        $this->thisGoodsCategory = $this->goodsCategory();
     }
 
     public function getGoodslistIndexData($id)
@@ -22,7 +22,7 @@ class GoodslistModel extends BaseModel
         $page = $this->pageNavgation($count);
         $result['goods_list'] = $this->tableGoods()->where($condition)->field('id, title, title_info, inventory, sell_price, pic_one, path')->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
         $result['show'] = $page->show();
-        $result = array_merge($this->thisGoodsSort, $result);
+        $result = array_merge($this->thisGoodsCategory, $result);
         return $result;
     }
 }

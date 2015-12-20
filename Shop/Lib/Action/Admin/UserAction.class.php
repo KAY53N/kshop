@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class UserAction extends QxAction {
     protected $userModel;
     public function _initialize()
@@ -128,4 +127,3 @@ class UserAction extends QxAction {
         $this->display('index');
     }
 }
-?>

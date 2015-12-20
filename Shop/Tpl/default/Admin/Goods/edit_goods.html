@@ -29,7 +29,7 @@
                     <td>
                         <select class="input_text" name="brand" dataType="Require"  msg="未选择商品品牌" style="padding:0px">
                             <option>请选择</option>
-                            <volist name="data.sortInfo.sortList" id="vo">
+                            <volist name="data.categoryInfo.list" id="vo">
                             <option value="<{$vo.id}>" <if condition="$vo['id'] eq $data['goodsInfo']['brand']">selected="true"<else /></if>><php>for($i=0; $i<$vo["count"]*6; $i++){echo "&nbsp;";}</php>┗<{$vo.name}></option>
                             </volist>
                         </select>
@@ -69,7 +69,7 @@
 
                 <tr>
                     <td>&nbsp;</td>
-                    <td><empty name="list['pic_one']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_one}>" /></empty></td>
+                    <td><empty name="data['goodsInfo']['pic_one']"><else /><img src="__APP__/<{$data.goodsInfo.path}>x_<{$data.goodsInfo.pic_one}>" /></empty></td>
                 </tr>
 
                 <tr>
@@ -79,7 +79,7 @@
 
                 <tr>
                     <td>&nbsp;</td>
-                    <td><empty name="list['pic_two']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_two}>" /></empty></td>
+                    <td><empty name="data['goodsInfo']['pic_two']"><else /><img src="__APP__/<{$data.goodsInfo.path}>x_<{$data.goodsInfo.pic_two}>" /></empty></td>
                 </tr>
 
                 <tr>
@@ -89,7 +89,7 @@
 
                 <tr>
                     <td>&nbsp;</td>
-                    <td><empty name="list['pic_three']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_three}>" /></empty></td>
+                    <td><empty name="data['goodsInfo']['pic_three']"><else /><img src="__APP__/<{$data.goodsInfo.path}>x_<{$data.goodsInfo.pic_three}>" /></empty></td>
                 </tr>
 
                 <tr>
@@ -99,7 +99,7 @@
 
                 <tr>
                     <td>&nbsp;</td>
-                    <td><empty name="list['pic_four']"><else /><img src="__APP__/<{$list.path}>x_<{$list.pic_four}>" /></empty></td>
+                    <td><empty name="data['goodsInfo']['pic_four']"><else /><img src="__APP__/<{$data.goodsInfo.path}>x_<{$data.goodsInfo.pic_four}>" /></empty></td>
                 </tr>
 
                 <tr>

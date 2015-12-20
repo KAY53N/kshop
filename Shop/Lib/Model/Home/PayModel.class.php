@@ -14,7 +14,9 @@ class PayModel extends BaseModel
 
     public function getSaveOrderDataStatus($condition, $saveData)
     {
-        return $this->tableOrders()->where($condition)->save($saveData);
+        $this->tableOrders()->startTrans();
+        $this->tableOrders()->lock(true)->where($condition)->save($saveData);
+        return $this->tableOrders()->commit();
     }
 
     public function getOrderData($condition)
@@ -24,11 +26,15 @@ class PayModel extends BaseModel
 
     public function getSaveGoodsInventoryStatus($updateCondition, $minusGoodsNum)
     {
-        return $this->tableGoods()->setDec('inventory', $updateCondition, $minusGoodsNum);
+        $this->tableGoods()->startTrans();
+        $this->tableGoods()->lock(true)->setDec('inventory', $updateCondition, $minusGoodsNum);
+        return $this->tableGoods()->commit();
     }
 
     public function getSaveUserSumPointsStatus($userPointsCondition, $totalPoints)
     {
-        return $this->tableUser()->setInc('sum_points', $userPointsCondition, $totalPoints);
+        $this->tableUser()->startTrans();
+        $this->tableUser()->lock(true)->setInc('sum_points', $userPointsCondition, $totalPoints);
+        return $this->tableUser()->commit();
     }
 }

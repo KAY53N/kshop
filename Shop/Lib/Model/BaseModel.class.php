@@ -7,9 +7,9 @@
  */
 class BaseModel extends RelationModel
 {
-    private static $_newsModel, $_sliderModel, $_goodsModel, $_cartModel, $_sortModel,
+    private static $_newsModel, $_sliderModel, $_goodsModel, $_cartModel, $_categoryModel,
                    $_couponModel, $_userModel, $_userinfoModel, $_ordersModel, $_commentModel,
-                   $_shopsetModel, $_adminModel, $_webInfo, $_webFooterNews, $_goodsSort;
+                   $_shopsetModel, $_adminModel, $_webInfo, $_webFooterNews, $_goodsCategory;
 
     public function tableNews()
     {
@@ -47,13 +47,13 @@ class BaseModel extends RelationModel
         return self::$_cartModel;
     }
 
-    public function tableSort()
+    public function tableCategory()
     {
-        if(!(self::$_sortModel instanceof self))
+        if(!(self::$_categoryModel instanceof self))
         {
-            self::$_sortModel = new Model('Sort');
+            self::$_categoryModel = new Model('Category');
         }
-        return self::$_sortModel;
+        return self::$_categoryModel;
     }
 
     public static function tableCoupon()
@@ -150,15 +150,15 @@ class BaseModel extends RelationModel
         return self::$_webFooterNews;
     }
 
-    public function goodsSort()
+    public function goodsCategory()
     {
-        if(empty(self::$_goodsSort))
+        if(empty(self::$_goodsCategory))
         {
-            $result['sort_list'] = $this->tableSort()->field('id,name,pid,path,concat(path,"-",id) as bpath')->order('bpath')->select();
-            $result['one_list'] = $this->tableSort()->where('pid = 0')->order('id asc')->select();
-            self::$_goodsSort = $result;
+            $result['category_list'] = $this->tableCategory()->field('id, name, pid, path, concat(path,"-",id) as bpath')->order('bpath')->select();
+            $result['one_list'] = $this->tableCategory()->where('pid = 0')->order('id asc')->select();
+            self::$_goodsCategory = $result;
         }
-        return self::$_goodsSort;
+        return self::$_goodsCategory;
     }
 
     public function pageNavgation($count, $pageSize = 10)

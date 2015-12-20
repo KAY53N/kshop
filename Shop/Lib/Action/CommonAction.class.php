@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class CommonAction extends Action {
 
 	function feifa()
@@ -39,7 +38,7 @@ class CommonAction extends Action {
         }
         return $string;
     }
-
+    
     //发送邮件类
     function SendMail($address,$title,$message)
     {
@@ -85,4 +84,3 @@ class CommonAction extends Action {
         return($mail->Send());
     }
 }
-?>

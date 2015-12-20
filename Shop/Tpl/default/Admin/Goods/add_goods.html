@@ -29,7 +29,7 @@
                     <td>
                         <select class="input_text" name="brand" dataType="Require"  msg="未选择商品品牌" style="padding:0px">
                             <option>请选择</option>
-                            <volist name="data.sortList" id="vo">
+                            <volist name="data.list" id="vo">
                                 <option value="<{$vo.id}>"><php>for($i=0; $i<$vo["count"]*6; $i++){echo "&nbsp;";}</php>┗<{$vo.name}></option>
                             </volist>
                         </select>

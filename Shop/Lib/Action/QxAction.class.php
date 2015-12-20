@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class QxAction extends Action {
 	function feifa()
     {
@@ -39,5 +38,13 @@ class QxAction extends Action {
         }
         return $string;
     }
+    
+    function getSafeName(&$name)
+    {
+        $name = str_replace(array('"', '<', '>'), '', $name);
+        $name = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $name);
+        $info = pathinfo($name);
+        $name = substr($info['basename'], 1);
+        return isset($info['extension']) ? strtolower($info['extension']) : '';
+    }
 }
-?>

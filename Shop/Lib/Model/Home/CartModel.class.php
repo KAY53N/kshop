@@ -191,15 +191,18 @@ class CartModel extends BaseModel
         {
             $inventory = $this->tableGoods()->where(array('id'=>$goods_id[$i]))->getField('inventory');
             $data['inventory'] = intval($inventory)-intval($buy_num[$i]);
+            
+            $this->tableGoods()->startTrans();
             if(intval($data['inventory']) <= 0)
             {
                 $putawayData['putaway'] = 0;
-                $this->tableGoods()->where(array('id'=>$goods_id[$i]))->save($putawayData);
+                $this->tableGoods()->lock(true)->where(array('id'=>$goods_id[$i]))->save($putawayData);
             }
             else
             {
-                $this->tableGoods()->where(array('id'=>$goods_id[$i]))->save($data);
+                $this->tableGoods()->lock(true)->where(array('id'=>$goods_id[$i]))->save($data);
             }
+            $this->tableGoods()->commit();
         }
 
         $deleteCondition['user_id'] = array('eq', $userId);

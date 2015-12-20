@@ -1,0 +1,48 @@
+<include file="Public:headerFrame" />
+
+    <div class="admin_hd clearfix">
+        <span class="fl"><a  href="<{:U('Admin-Index/mainFrame')}>" target="mainFrame">管理中心</a> - 转移分类</span>
+        <span class="fr"><a href="<{:U('Admin-Category/index')}>" class="btn_sty">分类列表</a></span>
+    </div>
+
+    <div class="main_div">
+
+        <form name="theForm" id="demo" action="<{:U('Admin-Category/move_category_sub')}>" method="post" onSubmit="return Validator.Validate(this,2)" enctype="multipart/form-data">
+            <table width="100%" bgcolor="white">
+                <tr>
+                    <td align="right">现在所在分类：</td>
+                    <td>
+                        <select disabled="true">
+                            <option value="0"><{$data.active.name}></option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">转移到分类：</td>
+                    <td>
+                        <select name="pid">
+                            <option value="0">顶级分类</option>
+                            <volist name="data.allList.list" id="vo">
+                                <option value="<{$vo.id}>" <if condition="$vo['id'] eq $data['active']['id']">selected="true"<else /></if> >
+                                <php>for($i=0; $i<$vo["count"]*6; $i++){echo "&nbsp;";}</php>┗<{$vo.name}></option>
+                            </volist>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">分类名称：</td>
+                    <td><input type="text" disabled="true" name="name" class="input_text news_title" value="<{$data.name.name}>" ><span class="require-field">*</span></td>
+                </tr>
+
+                <tr>
+                    <td><input type="hidden" name="name_id" value="<{$data.name.id}>"></td>
+                    <td><input type="submit" id="bt" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+<include file="Public:footFrame" />

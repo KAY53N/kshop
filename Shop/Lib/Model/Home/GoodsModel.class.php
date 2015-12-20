@@ -7,17 +7,17 @@
  */
 class GoodsModel extends BaseModel
 {
-    protected $thisGoodsSort;
+    protected $thisGoodsCategory;
     public function _initialize()
     {
-        $this->thisGoodsSort = $this->goodsSort();
+        $this->thisGoodsCategory = $this->goodsCategory();
     }
 
     public function getGoodsIndexData($id)
     {
         $result['g_list'] = $this->tableGoods()->where(array('id'=>$id))->find();
-        $result['location'][1] = $this->tableSort()->where(array('id'=>$result['g_list']['brand']))->field('pid, name')->find();
-        $result['location'][0] = $this->tableSort()->where(array('id'=>$result['location'][1]['pid']))->field('id, name')->find();
+        $result['location'][1] = $this->tableCategory()->where(array('id'=>$result['g_list']['brand']))->field('pid, name')->find();
+        $result['location'][0] = $this->tableCategory()->where(array('id'=>$result['location'][1]['pid']))->field('id, name')->find();
 
         // 遍历相关评论
         $commentCondition['goods_id'] = array('eq', $id);
@@ -28,7 +28,7 @@ class GoodsModel extends BaseModel
         $page = $this->pageNavgation($count, 5);
         $result['commentData'] = $this->tableComment()->where($commentCondition)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
         $result['show'] = $page->show();
-        $result = array_merge($this->thisGoodsSort, $result);
+        $result = array_merge($this->thisGoodsCategory, $result);
         return $result;
     }
 

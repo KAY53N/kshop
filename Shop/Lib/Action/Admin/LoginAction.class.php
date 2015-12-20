@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class LoginAction extends CommonAction{
 	function index()
     {
@@ -62,4 +61,3 @@ class LoginAction extends CommonAction{
         }
     }
 }
-?>

@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class NewsAction extends QxAction {
     protected $newsModel;
     public function _initialize()
@@ -91,4 +90,3 @@ class NewsAction extends QxAction {
         $this->display('index');
     }
 }
-?>

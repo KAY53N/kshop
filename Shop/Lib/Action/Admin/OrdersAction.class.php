@@ -61,7 +61,7 @@ class OrdersAction extends QxAction {
 		}
 	}
 
-	function del_order()
+	function del_orders()
     {
 		isset($_GET) ? $deleteId = implode(',', $_GET) : 0;
 		$deleteId = $this->zaddslashes($deleteId);

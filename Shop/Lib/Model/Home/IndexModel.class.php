@@ -7,10 +7,10 @@
  */
 class IndexModel extends BaseModel
 {
-    protected $thisGoodsSort;
+    protected $thisGoodsCategory;
     public function _initialize()
     {
-        $this->thisGoodsSort = $this->goodsSort();
+        $this->thisGoodsCategory = $this->goodsCategory();
     }
 
     public function getIndexData($condition)
@@ -26,7 +26,7 @@ class IndexModel extends BaseModel
         $result['thinkpad'] = $this->tableGoods()->where('brand=109 AND putaway=1')->order('id desc')->select();
         $result['camera'] = $this->tableGoods()->where('brand=125 AND putaway=1')->order('id desc')->select();
         $result['url'] = U('Myapp://news/news_list');
-        $result = array_merge($this->thisGoodsSort, $result);
+        $result = array_merge($this->thisGoodsCategory, $result);
         return $result;
     }
 }

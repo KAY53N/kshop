@@ -29,7 +29,7 @@ class SearchAction extends CommonAction {
 	//高级搜索
 	function adv_search()
     {
-		$data = $this->searchModel->getGoodsSortData();
+		$data = $this->searchModel->getGoodsCategoryData();
         $this->assign('data', $data);
 		$this->display('adv_search');
 	}

@@ -16,17 +16,6 @@ class GoodsModel extends BaseModel
         return $result;
     }
 
-    public function getAllSortListData()
-    {
-        $result['sortList'] = $this->tableSort()->field('id,name,pid,path,concat(path,"-",id) as bpath')->order('bpath')->select();
-
-        foreach($result['list'] as $key=>$value)
-        {
-            $result['sortList'][$key]['count'] = count(explode('-', $value['bpath']))-2;
-        }
-        return $result;
-    }
-
     public function getAddGoodsDataStatus($addData)
     {
         return $this->tableGoods()->add($addData);

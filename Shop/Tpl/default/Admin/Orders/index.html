@@ -36,7 +36,7 @@
                     <td><switch name="vo.status" ><case value="0">等待付款</case><case value="1">已付款，等待发货</case><case value="2">已发货，等待收货</case><case value="3">交易成功</case></switch></td>
                     <td align="center">
                         <a title="编辑" href="<{:U('Admin-Orders/edit_order/id/').$vo['id']}>">编辑</a>
-                        <a title="移除" href="<{:U('Admin-Orders/del_order/id/').$vo['id']}>" id="del">移除</a>
+                        <a title="移除" href="<{:U('Admin-Orders/del_orders/id/').$vo['id']}>" id="del">移除</a>
                     </td>
                 </tr>
                 </volist>

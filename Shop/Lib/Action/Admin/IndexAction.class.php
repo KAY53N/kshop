@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class IndexAction extends QxAction
 {
     protected $indexModel;
@@ -41,4 +40,3 @@ class IndexAction extends QxAction
     	$this->display('Public/footFrame');
     } 
 }
-?>

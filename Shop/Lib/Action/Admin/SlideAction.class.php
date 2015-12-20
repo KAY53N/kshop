@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class SlideAction extends QxAction {
     protected $slideModel;
     public function _initialize()
@@ -110,31 +109,34 @@ class SlideAction extends QxAction {
 
 	private function upload_file()
     {
-			import('@.Org.UploadFile');
-			$prefix = 'banna_';  //上传后的图片前缀
-			$upload=new UploadFile();
-			$upload->maxSize='1000000';  //是指上传文件的大小，默认为-1,不限制上传文件大小bytes
-			$upload->savePath='./Public/images/banna/';       //上传保存到什么地方？路径建议大家已主文件平级目录或者平级目录的子目录来保存
-			$upload->saveRule=uniqid;    //上传文件的文件名保存规则  time uniqid  com_create_guid
-			$upload->thumbPrefix=$prefix;
-			$upload->uploadReplace=true;     //如果存在同名文件是否进行覆盖
-			$upload->allowExts=array('jpg','jpeg','png','gif');     //准许上传的文件后缀
-			$upload->allowTypes=array('image/png','image/jpg','image/pjpeg','image/gif','image/jpeg');  //检测mime类型
-			$upload->thumb=true;   //是否开启图片文件缩略
-			$upload->thumbMaxWidth='500';  //以字串格式来传，如果你希望有多个，那就在此处，用,分格，写上多个最大宽
-			$upload->thumbMaxHeight='200';	//最大高度
-			$upload->thumbRemoveOrigin=1;  //如果生成缩略图，是否删除原图
- 
-			if($upload->upload())
-            {
-					$info=$upload->getUploadFileInfo();
-					$info['prefix'] = $prefix;
-					return $info;
-			}
-            else
-            {
-				$this->error($upload->getErrorMsg());
-			}
+		import('@.Org.UploadFile');
+		
+		 $this->getSafeName($_FILES['file']['name']);
+		
+		$prefix = 'banna_';  //上传后的图片前缀
+		
+		$upload = new UploadFile();
+		$upload->maxSize = '1000000';  //是指上传文件的大小，默认为-1,不限制上传文件大小bytes
+		$upload->savePath = './Public/images/banna/';       //上传保存到什么地方？路径建议大家已主文件平级目录或者平级目录的子目录来保存
+		$upload->saveRule = uniqid;    //上传文件的文件名保存规则  time uniqid  com_create_guid
+		$upload->thumbPrefix = $prefix;
+		$upload->uploadReplace = true;     //如果存在同名文件是否进行覆盖
+		$upload->allowExts = array('jpg','jpeg','png','gif');     //准许上传的文件后缀
+		$upload->allowTypes = array('image/png','image/jpg','image/pjpeg','image/gif','image/jpeg');  //检测mime类型
+		$upload->thumb = true;   //是否开启图片文件缩略
+		$upload->thumbMaxWidth = '500';  //以字串格式来传，如果你希望有多个，那就在此处，用,分格，写上多个最大宽
+		$upload->thumbMaxHeight = '200';	//最大高度
+		$upload->thumbRemoveOrigin = 1;  //如果生成缩略图，是否删除原图
+
+		if($upload->upload())
+        {
+				$info=$upload->getUploadFileInfo();
+				$info['prefix'] = $prefix;
+				return $info;
+		}
+        else
+        {
+			$this->error($upload->getErrorMsg());
+		}
 	}
 }
-?>

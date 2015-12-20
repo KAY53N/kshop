@@ -1,5 +1,4 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
 class GroupAction extends QxAction
 {
 	function index()
@@ -8,4 +7,3 @@ class GroupAction extends QxAction
 		$this->display();
 	}
 }
-?>
