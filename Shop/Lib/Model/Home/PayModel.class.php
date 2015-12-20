@@ -14,14 +14,14 @@ class PayModel extends BaseModel
 
     public function getSaveOrderDataStatus($id, $saveData)
     {
-        $userTable = $this->tableUser();
+        $orderTable = $this->tableOrders();
         
-        $userTable->startTrans();
+        $orderTable->startTrans();
         
-        $userTable->lock(true)->where('id='.$id)->getField('id');
-        $userTable->where('id='.$id)->save($saveData);
+        $orderTable->lock(true)->where('id='.$id)->getField('id');
+        $orderTable->where('id='.$id)->save($saveData);
         
-        return $userTable->commit();
+        return $orderTable->commit();
     }
 
     public function getOrderData($condition)

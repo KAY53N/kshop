@@ -87,19 +87,19 @@ class PayAction extends CommonAction
                 $saveData['status'] = 1;
                 $saveData['alipay_No'] = $trade_no;
                 $orderCondition['order_No'] = array('eq', $out_trade_no);
-
+    
                 $orderInfo = $this->payModel->getOrderData($orderCondition);
                 $points = explode('-~-', $orderInfo['points']);
                 
                 $this->payModel->getSaveUserSumPointsStatus(intval($orderInfo['id']), array_sum($points));
-
+    
                 $status = $this->payModel->getSaveOrderDataStatus(intval($orderInfo['id']), $saveData);
                 
                 //logResult(var_export($_GET, true));
                 
                 if($status)
                 {
-                    $this->ChangeGoodsNum($orderInfo);
+                    $this->changeGoodsInventory($orderInfo);
                     echo 'success';
                 }
                 else
@@ -141,7 +141,7 @@ class PayAction extends CommonAction
             }
             
             $minusGoodsNum = $buy_num[$i];
-            $this->goodsModel->changeGoodsInventory(intval($goods_id[$i]), $minusGoodsNum);
+            $this->payModel->changeGoodsInventory(intval($goods_id[$i]), $minusGoodsNum);
         }
         
     }
@@ -173,30 +173,31 @@ class PayAction extends CommonAction
             }
             else
             {
+                echo "trade_status=".$_GET['trade_status'];
+            }
 
-                $saveData['status'] = 1;
-                $saveData['alipay_No'] = $trade_no;
-                $orderCondition['order_No'] = array('eq', $out_trade_no);
+            $saveData['status'] = 1;
+            $saveData['alipay_No'] = $trade_no;
+            $orderCondition['order_No'] = array('eq', $out_trade_no);
 
-                $orderInfo = $this->payModel->getOrderData($orderCondition);
-                $points = explode('-~-', $orderInfo['points']);
-                
-                $this->payModel->getSaveUserSumPointsStatus(intval($orderInfo['id']), array_sum($points));
+            $orderInfo = $this->payModel->getOrderData($orderCondition);
+            $points = explode('-~-', $orderInfo['points']);
+            
+            $this->payModel->getSaveUserSumPointsStatus(intval($orderInfo['id']), array_sum($points));
 
-                $status = $this->payModel->getSaveOrderDataStatus(intval($orderInfo['id']), $saveData);
-                
-                //logResult(var_export($_GET, true));
-                
-                if($status)
-                {
-                    $this->ChangeGoodsNum($orderInfo);
-                    header('Location:'.U('Home-Cart/cart_success/orderno/').$out_trade_no);
-                    exit;
-                }
-                else
-                {
-                    echo '付款失败';
-                }
+            $status = $this->payModel->getSaveOrderDataStatus(intval($orderInfo['id']), $saveData);
+            
+            //logResult(var_export($_GET, true));
+            
+            if($status)
+            {
+                $this->changeGoodsInventory($orderInfo);
+                header('Location:'.U('Home-Cart/cart_success/orderno/').$out_trade_no);
+                exit;
+            }
+            else
+            {
+                echo '付款失败';
             }
         }
         else
