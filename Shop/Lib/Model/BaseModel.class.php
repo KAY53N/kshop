@@ -7,26 +7,16 @@
  */
 class BaseModel extends RelationModel
 {
-    private static $_newsModel, $_sliderModel, $_goodsModel, $_cartModel, $_categoryModel,
-                   $_couponModel, $_userModel, $_userinfoModel, $_ordersModel, $_commentModel,
-                   $_shopsetModel, $_adminModel, $_webInfo, $_webFooterNews, $_goodsCategory;
-
+    private static $_goodsModel, $_userModel, $_webInfo, $_webFooterNews, $_goodsCategory;
+    
     public function tableNews()
     {
-        if(!(self::$_newsModel instanceof self))
-        {
-            self::$_newsModel = new Model('News');
-        }
-        return self::$_newsModel;
+        return M('News');
     }
 
     public function tableSlide()
     {
-        if(!(self::$_sliderModel instanceof self))
-        {
-            self::$_sliderModel = new Model('Slide');
-        }
-        return self::$_sliderModel;
+        return M('Slide');
     }
 
     public function tableGoods()
@@ -40,29 +30,17 @@ class BaseModel extends RelationModel
 
     public function tableCart()
     {
-        if(!(self::$_cartModel instanceof self))
-        {
-            self::$_cartModel = new Model('Cart');
-        }
-        return self::$_cartModel;
+        return M('Cart');
     }
 
     public function tableCategory()
     {
-        if(!(self::$_categoryModel instanceof self))
-        {
-            self::$_categoryModel = new Model('Category');
-        }
-        return self::$_categoryModel;
+        return M('Category');
     }
 
-    public static function tableCoupon()
+    public function tableCoupon()
     {
-        if(!(self::$_couponModel instanceof self))
-        {
-            self::$_couponModel = new Model('Coupon');
-        }
-        return self::$_couponModel;
+        return M('Coupon');
     }
 
     public function tableUser()
@@ -89,47 +67,27 @@ class BaseModel extends RelationModel
 
     public function tableUserinfo()
     {
-        if(!(self::$_userinfoModel instanceof self))
-        {
-            self::$_userinfoModel = new Model('Userinfo');
-        }
-        return self::$_userinfoModel;
+        return M('Userinfo');
     }
 
     public function tableOrders()
     {
-        if(!(self::$_ordersModel instanceof self))
-        {
-            self::$_ordersModel = new Model('Orders');
-        }
-        return self::$_ordersModel;
+        return M('Orders');
     }
 
     public function tableComment()
     {
-        if(!(self::$_commentModel instanceof self))
-        {
-            self::$_commentModel = new Model('Comment');
-        }
-        return self::$_commentModel;
+        return M('Comment');
     }
 
     public function tableShopSet()
     {
-        if(!(self::$_shopsetModel instanceof self))
-        {
-            self::$_shopsetModel = new Model('Shop_set');
-        }
-        return self::$_shopsetModel;
+        return M('Shop_set');
     }
 
     public function tableAdmin()
     {
-        if(!(self::$_adminModel instanceof self))
-        {
-            self::$_adminModel = new Model('Admin');
-        }
-        return self::$_adminModel;
+        return M('Admin');
     }
 
     public function webInfo()
@@ -168,5 +126,14 @@ class BaseModel extends RelationModel
         $page->setConfig('header', '条记录');
         $page->setConfig('theme', '<span class="pagestyle" style="color:blue">共%totalRow%%header%</span> <span class="pagestyle">当前%nowPage%&nbsp;/&nbsp;%totalPage% 页</span> %first% %upPage%  %linkPage% %downPage% %end%');
         return $page;
+    }
+    
+    public function logResult($word='')
+    {
+        $fp = fopen("log.txt","a");
+        flock($fp, LOCK_EX) ;
+        fwrite($fp,"执行日期：".strftime("%Y%m%d%H%M%S",time())."\n".$word."\n");
+        flock($fp, LOCK_UN);
+        fclose($fp);
     }
 }

@@ -89,35 +89,17 @@ class PayAction extends CommonAction
                 $orderCondition['order_No'] = array('eq', $out_trade_no);
 
                 $orderInfo = $this->payModel->getOrderData($orderCondition);
-
-                $totalPoints = 0;
                 $points = explode('-~-', $orderInfo['points']);
-                $buy_num = explode('-~-', $orderInfo['buy_num']);
-                $goods_id = explode('-~-', $orderInfo['goods_id']);
                 
-                for($i=0; $i<count($goods_id); $i++)
-                {
-                    if(empty($goods_id[$i]))
-                    {
-                        unset($goods_id[$i]);
-                    }
-                    if(empty($buy_num[$i]))
-                    {
-                        unset($buy_num[$i]);
-                    }
-                    $totalPoints = $totalPoints + $points[$i];
-                    $updateCondition = 'id='.$goods_id[$i];
-                    $minusGoodsNum = $buy_num[$i];
-                    $this->payModel->getSaveOrderDataStatus($updateCondition, $minusGoodsNum);
-                }
+                $this->payModel->getSaveUserSumPointsStatus(intval($orderInfo['id']), array_sum($points));
 
-                $userPointsCondition = 'id ='.$orderInfo['user_id'];
-                $this->payModel->getSaveUserSumPointsStatus($userPointsCondition, $totalPoints);
-
-                $status = $this->payModel->getSaveOrderDataStatus($orderCondition, $saveData);
-
+                $status = $this->payModel->getSaveOrderDataStatus(intval($orderInfo['id']), $saveData);
+                
+                //logResult(var_export($_GET, true));
+                
                 if($status)
                 {
+                    $this->ChangeGoodsNum($orderInfo);
                     echo 'success';
                 }
                 else
@@ -138,6 +120,31 @@ class PayAction extends CommonAction
             //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
         }
     }
+    
+    //成功支付后调用减去商品库存
+    private function changeGoodsInventory($orderInfo)
+    {
+        $totalPoints = 0;
+        $buy_num = explode('-~-', $orderInfo['buy_num']);
+        $goods_id = explode('-~-', $orderInfo['goods_id']);
+        
+        for($i=0; $i<count($goods_id); $i++)
+        {
+            if(empty($goods_id[$i]))
+            {
+                unset($goods_id[$i]);
+            }
+            
+            if(empty($buy_num[$i]))
+            {
+                unset($buy_num[$i]);
+            }
+            
+            $minusGoodsNum = $buy_num[$i];
+            $this->goodsModel->changeGoodsInventory(intval($goods_id[$i]), $minusGoodsNum);
+        }
+        
+    }
 
 
     function returnUrl()
@@ -149,7 +156,6 @@ class PayAction extends CommonAction
 
         if($verify_result)
         {
-            //logResult(var_export($_GET, true));
             //验证成功
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代码
@@ -167,48 +173,30 @@ class PayAction extends CommonAction
             }
             else
             {
-                echo "trade_status=".$_GET['trade_status'];
-            }
 
-            $saveData['status'] = 1;
-            $saveData['alipay_No'] = $trade_no;
-            $orderCondition['order_No'] = array('eq', $out_trade_no);
+                $saveData['status'] = 1;
+                $saveData['alipay_No'] = $trade_no;
+                $orderCondition['order_No'] = array('eq', $out_trade_no);
 
-            $orderInfo = $this->payModel->getOrderData($orderCondition);
+                $orderInfo = $this->payModel->getOrderData($orderCondition);
+                $points = explode('-~-', $orderInfo['points']);
+                
+                $this->payModel->getSaveUserSumPointsStatus(intval($orderInfo['id']), array_sum($points));
 
-            $totalPoints = 0;
-            $points = explode('-~-', $orderInfo['points']);
-            $buy_num = explode('-~-', $orderInfo['buy_num']);
-            $goods_id = explode('-~-', $orderInfo['goods_id']);
-            for($i=0; $i<count($goods_id); $i++)
-            {
-                if(empty($goods_id[$i]))
+                $status = $this->payModel->getSaveOrderDataStatus(intval($orderInfo['id']), $saveData);
+                
+                //logResult(var_export($_GET, true));
+                
+                if($status)
                 {
-                    unset($goods_id[$i]);
+                    $this->ChangeGoodsNum($orderInfo);
+                    header('Location:'.U('Home-Cart/cart_success/orderno/').$out_trade_no);
+                    exit;
                 }
-                if(empty($buy_num[$i]))
+                else
                 {
-                    unset($buy_num[$i]);
+                    echo '付款失败';
                 }
-                $totalPoints = $totalPoints + $points[$i];
-                $updateCondition = 'id='.$goods_id[$i];
-                $minusGoodsNum = $buy_num[$i];
-                $this->payModel->getSaveOrderDataStatus($updateCondition, $minusGoodsNum);
-            }
-
-            $userPointsCondition = 'id ='.$orderInfo['user_id'];
-            $this->payModel->getSaveUserSumPointsStatus($userPointsCondition, $totalPoints);
-            $status = $this->payModel->getSaveOrderDataStatus($orderCondition, $saveData);
-
-            if($status)
-            {
-                //重定向浏览器
-                header('Location:'.U('Home-Cart/cart_success/orderno/').$out_trade_no);
-                exit;
-            }
-            else
-            {
-                echo '付款失败';
             }
         }
         else
@@ -217,6 +205,5 @@ class PayAction extends CommonAction
             //如要调试，请看alipay_notify.php页面的verifyReturn函数，比对sign和mysign的值是否相等，或者检查$responseTxt有没有返回true
             echo '验证失败';
         }
-
     }
 }

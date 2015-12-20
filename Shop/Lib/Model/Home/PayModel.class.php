@@ -12,11 +12,16 @@ class PayModel extends BaseModel
         return $this->tableOrders()->where($condition)->find();
     }
 
-    public function getSaveOrderDataStatus($condition, $saveData)
+    public function getSaveOrderDataStatus($id, $saveData)
     {
-        $this->tableOrders()->startTrans();
-        $this->tableOrders()->lock(true)->where($condition)->save($saveData);
-        return $this->tableOrders()->commit();
+        $userTable = $this->tableUser();
+        
+        $userTable->startTrans();
+        
+        $userTable->lock(true)->where('id='.$id)->getField('id');
+        $userTable->where('id='.$id)->save($saveData);
+        
+        return $userTable->commit();
     }
 
     public function getOrderData($condition)
@@ -24,17 +29,27 @@ class PayModel extends BaseModel
         return $this->tableOrders()->where($condition)->find();
     }
 
-    public function getSaveGoodsInventoryStatus($updateCondition, $minusGoodsNum)
+    public function changeGoodsInventory($goodsId, $minusGoodsNum)
     {
-        $this->tableGoods()->startTrans();
-        $this->tableGoods()->lock(true)->setDec('inventory', $updateCondition, $minusGoodsNum);
-        return $this->tableGoods()->commit();
+        $goodsTable = M('Goods');
+        
+        $goodsTable->startTrans();
+        
+        $goodsTable->lock(true)->getField('id');
+        $goodsTable->setDec('inventory', 'id='.$goodsId, $minusGoodsNum);
+        
+        return $goodsTable->commit();
     }
 
-    public function getSaveUserSumPointsStatus($userPointsCondition, $totalPoints)
+    public function getSaveUserSumPointsStatus($orderId, $totalPoints)
     {
-        $this->tableUser()->startTrans();
-        $this->tableUser()->lock(true)->setInc('sum_points', $userPointsCondition, $totalPoints);
-        return $this->tableUser()->commit();
+        $userTable = $this->tableUser();
+        
+        $userTable->startTrans();
+        
+        $id = $userTable->lock(true)->where('id='.$orderId)->getField('id');
+        $userTable->setInc('sum_points', 'id='.$id, $totalPoints);
+        
+        return $userTable->commit();
     }
 }

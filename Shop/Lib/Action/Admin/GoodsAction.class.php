@@ -9,13 +9,13 @@ class GoodsAction extends QxAction
         $this->categoryModel = D('Admin.Category');
     }
 
-    function index()
+	function index()
     {
 		Load('extend');
         $data = $this->goodsModel->getGoodsListData();
         $this->assign('data', $data);
 		$this->display();
-    }
+	}
 
 	function add_goods()
     {

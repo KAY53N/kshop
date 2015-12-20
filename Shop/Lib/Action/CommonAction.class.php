@@ -15,6 +15,15 @@ class CommonAction extends Action {
         Image::buildImageVerify(3, 1, 'gif', 145, 25, 'verify');
     }
 
+    function logResult($word='')
+    {
+        $fp = fopen("log.txt","a");
+        flock($fp, LOCK_EX) ;
+        fwrite($fp,"执行日期：".strftime("%Y%m%d%H%M%S",time())."\n".$word."\n");
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    }
+    
     function zaddslashes($string, $force = 0, $strip = FALSE)
     {
         if (!defined('MAGIC_QUOTES_GPC'))
