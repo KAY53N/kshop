@@ -352,9 +352,12 @@ a { color:#393635; text-decoration:none;}
     overflow:hidden;
 }
 
-.hot_goods .goods_pic, .hot_goods .goods_pic img{
+.hot_goods .goods_pic, .hot_goods .goods_pic, .gdlist_pic{
+	display:table-cell;
     width:100px;
     height:100px;
+	text-align:center;
+	vertical-align:middle;
 }
 
 /* 品牌推荐 */
@@ -761,14 +764,9 @@ a { color:#393635; text-decoration:none;}
     padding:2px 10px 2px 10px;
 }
 
-.gdlist_pic {
-    width:160px;
-    height:160px;
-}
-
 .gdlist_titinfo {
-    width: 300px;
-    height: 160px;
+    width: 420px;
+    height: 130px;
 }
 
 .top_msg {

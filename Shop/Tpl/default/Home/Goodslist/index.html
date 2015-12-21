@@ -20,7 +20,7 @@
                 <empty name="data.goods_list"><br><br><h3>非常抱歉，没有找到相关商品</h3><else />
                 <volist name="data.goods_list" id="vo">
                 <li class="pt20 pb20 bb inline_block">
-                    <span class="gdlist_pic fl"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img width="160" height="160" src="__ROOT__/<{$vo.path}>z_<{$vo.pic_one}>" /></a></span>
+                    <span class="gdlist_pic fl mt20 ml20 mr20"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><img class="lazy" data-original="__ROOT__/<{$vo.path}>x_<{$vo.pic_one}>" /></a></span>
 
                     <span class="gdlist_titinfo fl pl20">
                         <div class="f_black lh24"><a href="__APP__/goods/index/id/<{$vo.id}>" target="_blank"><{$vo.title|msubstr=0,85}></a></div>

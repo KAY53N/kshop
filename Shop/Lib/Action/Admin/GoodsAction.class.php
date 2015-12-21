@@ -93,8 +93,8 @@ class GoodsAction extends QxAction
 		$upload->allowExts = array('jpg','jpeg','png','gif');     //准许上传的文件后缀
 		$upload->allowTypes = array('image/png','image/jpg','image/pjpeg','image/gif','image/jpeg');  //检测mime类型
 		$upload->thumb = true;   //是否开启图片文件缩略
-		$upload->thumbMaxWidth = '120,310,900';  //以字串格式来传，如果你希望有多个，那就在此处，用,分格，写上多个最大宽
-		$upload->thumbMaxHeight = '120,310,900';	//最大高度
+		$upload->thumbMaxWidth = '100,310,900';  //以字串格式来传，如果你希望有多个，那就在此处，用,分格，写上多个最大宽
+		$upload->thumbMaxHeight = '100,310,900';	//最大高度
 		$upload->thumbPrefix = 'x_,z_,d_';//缩略图文件前缀
 		$upload->thumbRemoveOrigin = 1;  //如果生成缩略图，是否删除原图		
 

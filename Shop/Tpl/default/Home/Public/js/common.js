@@ -3,7 +3,7 @@
  */
 $(function(){
     $('#Kslider').Kslider();
-
+    
     $('.m-cat-depth-1').hover(function(){
         $(this).find('.m-cat-popup').css({
             'display':'block',

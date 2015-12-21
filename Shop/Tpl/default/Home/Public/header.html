@@ -9,11 +9,19 @@
 <link type="text/css" rel="stylesheet" href="../Public/css/css.css" />
 <script type="text/javascript" src="../Public/js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="../Public/js/jquery.Kslider-1.2.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.lazyload.min.js?v=1.9.1"></script>
 <script type="text/javascript" src="../Public/js/common.js"></script>
 <script type="text/javascript">
     var _URL_ = '__URL__';
     var _APP_ = '__APP__';
     var _ROOT_ = '__APP__';
+    $(function(){
+        $('img.lazy').lazyload({
+    	    placeholder : '../Public/images/loading.gif',
+    	    effect: 'fadeIn',
+    	    threshold: 200
+    	});
+    });
 </script>
 </head>
 
