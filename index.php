@@ -1,6 +1,6 @@
 <?php
 header('Content-type:text/html; charset=utf-8');
-define('THINK_PATH', './ThinkPHP/');
+define('THINK_PATH', './TP/');
 define('APP_NAME', 'Shop');
 define('APP_PATH', './Shop/');
 define('RUNTIME_PATH', './BBAFE593_CACHE/');
