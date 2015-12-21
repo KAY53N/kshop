@@ -12,7 +12,7 @@
 ### 安装
 1、PHP版本请使用 ≥ 5.3 并且 ≤ 5.6 
 
-2、修改配置文件数据库相关并将表结构文件 kshop.sql 导入至Mysql，如果需要测试数据下载请到 [Tag](https://github.com/kaysen820/kshop/releases/tag/testPackageFor1.4) 中下载
+2、修改配置文件数据库相关并将表结构文件 kshop.sql 导入至Mysql，如果需要测试数据下载请到 [http://www.xujiantao.com/download/DataPackages.zip](http://www.xujiantao.com/download/DataPackages.zip) 中下载
 
 3、默认为 REWRITE 模式，需要开启 Apache 或 Nginx 的 REWRITE 并配置 vhost；如果使用的是 IIS 则需要自行将 .htaccess 转换成 IIS 的形式
 
