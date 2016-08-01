@@ -1,5 +1,7 @@
 #Kshop
 
+[![Build Status](https://travis-ci.org/kaysen820/kshop.svg?branch=master)](https://travis-ci.org/kaysen820/kshop)
+
 演示地址：http://www.xujiantao.com/works/lvsenshop
 
 早期托管地址：http://git.oschina.net/71927735/Kshop
