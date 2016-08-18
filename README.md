@@ -1,18 +1,11 @@
 #Kshop
 [![Latest Stable Version](https://poser.pugx.org/kaysen820/kaysen-dev/version)](https://packagist.org/packages/kaysen820/kaysen-dev)
-
 [![Total Downloads](https://poser.pugx.org/kaysen820/kaysen-dev/downloads)](https://packagist.org/packages/kaysen820/kaysen-dev)
-
 [![Latest Unstable Version](https://poser.pugx.org/kaysen820/kaysen-dev/v/unstable)](//packagist.org/packages/kaysen820/kaysen-dev)
-
 [![License](https://poser.pugx.org/kaysen820/kaysen-dev/license)](https://packagist.org/packages/kaysen820/kaysen-dev)
-
 [![Monthly Downloads](https://poser.pugx.org/kaysen820/kaysen-dev/d/monthly)](https://packagist.org/packages/kaysen820/kaysen-dev)
-
 [![Daily Downloads](https://poser.pugx.org/kaysen820/kaysen-dev/d/daily)](https://packagist.org/packages/kaysen820/kaysen-dev)
-
 [![composer.lock available](https://poser.pugx.org/kaysen820/kaysen-dev/composerlock)](https://packagist.org/packages/kaysen820/kaysen-dev)
-
 [![Build Status](https://travis-ci.org/kaysen820/kshop.svg?branch=master)](https://travis-ci.org/kaysen820/kshop)
 
 演示地址：http://www.xujiantao.com/works/lvsenshop
